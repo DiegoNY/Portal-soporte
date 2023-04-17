@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model accesos {
+  id              Int     @id @default(autoincrement())
+  id_sucursal     Int?
+  nombreAcceso    String? @db.VarChar(255)
+  idAcceso        String? @db.VarChar(255)
+  contrase_a      String? @map("contraseña") @db.VarChar(255)
+  estado          String? @db.VarChar(255)
+  proveedor       String? @db.VarChar(255)
+  nombresistema   String? @db.VarChar(255)
+  tipointegracion String? @db.VarChar(255)
+
+  @@index([id_sucursal], map: "id_sucursal")
+}
+
+model bandera {
+  id         Int     @id @default(autoincrement())
+  nombre     String? @db.VarChar(255)
+  logo       String? @db.VarChar(225)
+  id_empresa String? @db.VarChar(255)
+}
+
+model banderasucursal {
+  id         Int     @id @default(autoincrement())
+  bandera    String? @db.VarChar(255)
+  nombre     String? @db.VarChar(255)
+  idSucursal String? @db.VarChar(255)
+  estado     String? @db.VarChar(255)
+}
+
+model cargos {
+  nombre String? @db.VarChar(255)
+  id     Int     @id @default(autoincrement())
+  fecha  String? @db.VarChar(225)
+  estado Int?
+}
+
+model contactos {
+  id              Int     @id @default(autoincrement())
+  id_empresa      String? @db.VarChar(255)
+  nombre_contacto String? @db.VarChar(255)
+  cargo           String? @db.VarChar(255)
+  telefono        Int?
+  correo          String? @db.VarChar(255)
+  estado          String? @db.VarChar(255)
+  detalle         String? @db.VarChar(255)
+
+  @@index([id_empresa], map: "id_empresa")
+}
+
+model empresa {
+  id                  Int     @id @default(autoincrement())
+  id_grupo            String? @db.VarChar(255)
+  tipo_persona        String? @db.VarChar(255)
+  ruc                 String  @unique(map: "ruc") @db.VarChar(255)
+  razon_social        String? @db.VarChar(255)
+  nom_comercial       String? @db.VarChar(255)
+  direccion           String? @db.VarChar(255)
+  id_ubigeo           Int?
+  id_rubro            String? @db.VarChar(255)
+  id_tipo_sistema     String? @db.VarChar(255)
+  id_tipo_integracion String? @db.VarChar(255)
+  tipo_envio          String? @db.VarChar(255)
+  estado              String? @db.VarChar(255)
+  fecha_registro      String? @db.VarChar(255)
+  eliminada           Int?
+  estado_comercial    String? @db.VarChar(225)
+  proveedor           String? @db.VarChar(255)
+  imglogo             String? @db.VarChar(255)
+  clavesol            String? @db.VarChar(255)
+  usuarioclavesol     String? @db.VarChar(255)
+
+  @@index([id_grupo, id_ubigeo], map: "id_grupo")
+  @@index([id_grupo, id_ubigeo], map: "id_grupo_2")
+  @@index([id_ubigeo], map: "id_ubigeo")
+}
+
+model grupo {
+  id              Int     @id @default(autoincrement())
+  nombre          String? @db.VarChar(255)
+  descripcion     String? @db.VarChar(225)
+  estado          Int?
+  usuarioCreacion String? @db.VarChar(255)
+  fechaCreacion   String? @db.VarChar(225)
+}
+
+model modulos {
+  modulos String? @db.VarChar(255)
+  id      Int     @id @default(autoincrement())
+  estatus String? @db.VarChar(255)
+}
+
+model permisos {
+  id         Int     @id @default(autoincrement())
+  id_modulo  String? @db.VarChar(255)
+  id_usuario String? @db.VarChar(255)
+}
+
+model rubro {
+  id     Int     @id @default(autoincrement())
+  nombre String? @db.VarChar(255)
+  estado Int?
+  fecha  String? @db.VarChar(225)
+}
+
+model sistema_sucursal {
+  nombre      String? @db.VarChar(255)
+  id          Int     @id @default(autoincrement())
+  integracion String? @db.VarChar(255)
+  proveedor   String? @db.VarChar(255)
+  id_sucursal String? @db.VarChar(255)
+  estado      String? @db.VarChar(255)
+}
+
+model sucursal {
+  id                     Int     @id @default(autoincrement())
+  codigo_cofide          String? @db.VarChar(255)
+  nombre                 String? @db.VarChar(255)
+  direccion              String? @db.VarChar(255)
+  ubigeo                 String? @db.VarChar(255)
+  estado                 Int?
+  id_empresa             String? @db.VarChar(255)
+  codigoApu              String? @db.VarChar(255)
+  bandera                String? @db.VarChar(255)
+  numerosucursal_empresa String? @db.VarChar(255)
+  banderasucursal        String? @db.VarChar(255)
+}
+
+model tipo_integracion {
+  id     Int     @id @default(autoincrement())
+  nombre String? @db.VarChar(255)
+  estado Int?
+  fecha  String? @db.VarChar(255)
+}
+
+model tipo_sistema {
+  id          Int     @id @default(autoincrement())
+  nombre      String? @db.VarChar(255)
+  fecha       String? @db.VarChar(225)
+  estado      String? @db.VarChar(255)
+  proveedor   String? @db.VarChar(255)
+  descripcion String? @db.VarChar(255)
+}
+
+model ubigeo {
+  ubigeo       Int
+  distrito     String? @db.VarChar(225)
+  provincia    String? @db.VarChar(255)
+  departamento String? @db.VarChar(255)
+  poblacion    String? @db.VarChar(255)
+  superficie   String? @db.VarChar(255)
+  y            String? @db.VarChar(255)
+  x            String? @db.VarChar(255)
+  id           Int     @id @default(autoincrement())
+}
+
+model usuarios {
+  usuario    String  @id @db.VarChar(255)
+  contrase_a String? @map("contraseña") @db.VarChar(255)
+  cargo      String? @db.VarChar(255)
+  foto       String? @db.VarChar(255)
+  id         Int
+  estado     Int?
+}
