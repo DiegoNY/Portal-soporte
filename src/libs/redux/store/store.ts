@@ -4,7 +4,7 @@ import turnoReducer from "../feature/TurnoSlice.feature";
 const store = configureStore({
     reducer: {
         navigation: NavigationReducer,
-        turno: turnoReducer
+        shift: turnoReducer
     }
 })
 

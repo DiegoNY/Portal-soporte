@@ -1,18 +1,27 @@
+import { Shift } from '@/types/Shift.type';
 import { createSlice } from '@reduxjs/toolkit';
 
 export const turnoSlice = createSlice({
     name: 'navigation',
     initialState: {
-        turno: false
+        shift: {},
+        view_edit_shift: false,
+
     },
     reducers: {
-        EditTurno: (state, actions) => {
-            state.turno = actions.payload;
-        },
 
+        ChangeViewEditShift: (state, actions: { type?: string, payload: { shift?: Shift } }) => {
+
+            const { shift }: { shift?: Shift } = actions.payload;
+            state.view_edit_shift = !state.view_edit_shift;
+            // console.log(shift);
+            if (shift) {
+                state.shift = shift
+            }
+        }
     }
 });
 
-export const { EditTurno } = turnoSlice.actions;
+export const { ChangeViewEditShift } = turnoSlice.actions;
 
 export default turnoSlice.reducer

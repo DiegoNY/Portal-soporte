@@ -1,13 +1,22 @@
+import { ChangeViewEditShift } from "@/libs/redux/feature/TurnoSlice.feature";
 import { RootState } from "@/libs/redux/store/store";
-import { useRef, useState } from "react"
-import { useSelector } from "react-redux";
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux";
 
 export const ItemTurno = () => {
     const [viewEdit, setViewEdit] = useState(false);
-    const shift = useSelector((state: RootState) => state.turno);
+    const dispatch = useDispatch();
 
     const editShift = () => {
-
+        dispatch(ChangeViewEditShift({
+            shift: {
+                deleted: 123, ano: 213, estado: 1,
+                fecha_fin_a: '2023-12-12', fecha_inicio_a: "2023-02-12",
+                fecha_registro: '2023-05-04', hora_fin: "08:00:00",
+                hora_fin_a: "08:00:00", hora_inicio_a: "09:00:00",
+                mes: 9, personal_a: 9293294, tipo_turno: 1
+            }
+        }))
     }
 
     return (

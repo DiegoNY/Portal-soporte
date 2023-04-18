@@ -8,7 +8,6 @@ import store from '@/libs/redux/store/store';
 import Layout from '@/components/Layout';
 import Header from '@/components/Header/Header';
 import Main from '@/components/Main';
-import dataSource from '@/libs/typeorm';
 
 
 export default function App({ Component, pageProps }: AppProps) {
