@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { InputForm } from "./InputForm"
 
 export const Form = () => {
-    const [focus, setFocus] = useState(false);
-
+    
     return (
         <>
             {/* <h2 className="mb-2   text-[16px]">Personal</h2> */}
@@ -34,7 +32,7 @@ export const Form = () => {
                         </option>
                     </select>
                 </div>
-                <InputForm focus={focus} setFocus={setFocus} />
+                <InputForm />
             </form>
         </>
     )
