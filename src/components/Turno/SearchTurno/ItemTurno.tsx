@@ -1,4 +1,4 @@
-import { ChangeViewEditShift } from "@/libs/redux/feature/TurnoSlice.feature";
+import { ChangeViewActionsShift } from "@/libs/redux/feature/TurnoSlice.feature";
 import { RootState } from "@/libs/redux/store/store";
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
@@ -8,13 +8,23 @@ export const ItemTurno = () => {
     const dispatch = useDispatch();
 
     const editShift = () => {
-        dispatch(ChangeViewEditShift({
+        dispatch(ChangeViewActionsShift({
             shift: {
-                deleted: 123, ano: 213, estado: 1,
-                fecha_fin_a: '2023-12-12', fecha_inicio_a: "2023-02-12",
-                fecha_registro: '2023-05-04', hora_fin: "08:00:00",
-                hora_fin_a: "08:00:00", hora_inicio_a: "09:00:00",
-                mes: 9, personal_a: 9293294, tipo_turno: 1
+                id: 1,
+                staff: 1,
+                start_date: new Date('2023-03-02'),
+                start_time: '00:00:00',
+                end_date: new Date('2023-03-06'),
+                end_time: '00:00:00',
+                shift_type: 0,
+                registration_date: new Date('2023-03-02'),
+                year: '2023',
+                month: '01',
+                support_staff: 0,
+                support_start_date: new Date('2023-03-08'),
+                support_start_time: '00:00:00',
+                support_end_date: new Date('2023-03-16'),
+                support_end_time: '00:00:00',
             }
         }))
     }

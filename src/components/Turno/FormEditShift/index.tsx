@@ -1,11 +1,11 @@
-import { CardFormEditShift } from "./CardFormEditShift";
-import { Form } from "./FormEditShift";
+import { CardFormShift } from "./CardFormShift";
+import { FormShift } from "./FormShift";
 
 export const FormEditShift = () => {
 
     return (
-        <CardFormEditShift>
-            <Form />
-        </CardFormEditShift>
+        <CardFormShift>
+            <FormShift />
+        </CardFormShift>
     )
 }
