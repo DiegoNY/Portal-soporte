@@ -20,7 +20,7 @@ export const CardFormShift = ({
                 </div>
             </div>
             <div className=" w-full px-2 flex items-center justify-between">
-                <h1 className="text-[15px] font-[400]">
+                <h1 className="text-[15px] font-[500] mt-1">
                     Informacion de Turno {turno.second_view_action ? 'Personal de apoyo' : ''}
                 </h1>
                 <span
