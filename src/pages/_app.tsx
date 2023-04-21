@@ -9,7 +9,6 @@ import Layout from '@/components/Layout';
 import Header from '@/components/Header/Header';
 import Main from '@/components/Main';
 
-
 export default function App({ Component, pageProps }: AppProps) {
   // const t = false;
   // if (t == false) {

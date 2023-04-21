@@ -1,57 +1,60 @@
-import { days, generateDate } from "@/utils/CalendarTS"
-import { useState } from "react";
-import dayjs from "dayjs";
-import cn from "@/utils/cn";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+import esLocale from '@fullcalendar/core/locales/es';
+import interactionPlugin from '@fullcalendar/interaction'; // for selectable
+import { shallowEqual, useSelector } from "react-redux";
+import { RootState } from "@/libs/redux/store/store";
+import { useEffect, useState } from 'react';
 
 export const CalendarUI = () => {
-    const currentDate = dayjs();
-    const [today, setToday] = useState(currentDate);
-    const [selectDate, setSelectDate] = useState(currentDate);
+    const shift = useSelector((state: RootState) => state.shift, shallowEqual);
+    const [events, setEvents] = useState(shift.events)
+
+    useEffect(() => {
+        setEvents(shift.events);
+    }, [shift.events])
+
     return (
         <>
-            <div className="grid grid-cols-7 w-full  p-1 h-full "     >
-                <div className="flex justify-between col-span-7 px-6 items-center bg-slate-100">
-                    <div>
-                        move 
-                    </div>
-                    <div>
-                        move 
-                    </div>
-                    <div>
-                        move 
-                    </div>
-                </div>
-                <div className="col-span-7 grid grid-cols-7 w-full border-t  ">
-                    {days.map(day => {
-                        return (
-                            <h1 className="grid place-content-center">
-                                {day}
-                            </h1>
-                        )
-                    })}
-                </div>
-                {generateDate(today.month(), today.year()).map(({ date, currentMonth, today }, index) => {
-                    return (
-                        <div
-                            key={index}
-                            className="grid place-content-center border-t"
-                        >
-                            <h1
-                                className={cn(
-                                    currentMonth ? "" : "text-gray-400",
-                                    today ? "bg-sky-200 text-blue-700" : "",
-                                    selectDate.toDate().toDateString() === date.toDate().toDateString() ? "bg-sky-100 text-blue-700" : "",
-                                    "h-[24px] w-[24px]  grid place-content-center  rounded-full hover:bg-black hover:text-white transition-all cursor-pointer"
-                                )}
-                            >{date.date()}</h1>
-                        </div>
-                    )
-                })}
+            <FullCalendar
+                height='100%'
+                plugins={
+                    [
+                        dayGridPlugin,
+                        timeGridPlugin,
+                        interactionPlugin,
+                        listPlugin,
+                    ]
+                }
+
+                headerToolbar={
+                    {
+                        left: "prev,next today",
+                        center: "title",
+                        end: ""
+                    }
+                }
+
+                allDayClassNames={"red"}
+                events={events}
+                locale={esLocale}
+                selectable={true} // habilita la selección de fechas
+                selectOverlap={false} // deshabilita la superposición de eventos en las fechas seleccionadas
+                select={(e) => {
+                    console.log(e.start)
+                    console.log(e.end)
+                }}
 
 
-            </div>
+            />
+
+
 
         </>
 
     )
 }
+
+

@@ -17,7 +17,7 @@ export const CardSearchTurno = ({ children }: { children: React.ReactNode }) => 
                     </span>
                     <input
                         className='outline-none bg-inherit w-full'
-                        placeholder='Fecha - Descripcion'
+                        placeholder='Fecha - Descripcion - Nombre'
                     />
                 </div>
                 <button

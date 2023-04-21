@@ -3,10 +3,12 @@ import { useState } from "react"
 type Props = {
     name_form: string,
     name_input: string
-    children: React.ReactNode
+    children: React.ReactNode,
+    onChange: any,
+    value: string | number
 }
 
-export const SelectForm = ({ name_form, name_input, children }: Props) => {
+export const SelectForm = ({ name_form, name_input, children, onChange, value }: Props) => {
     const [focus, setFocus] = useState(false);
     return (
         <>
@@ -20,7 +22,9 @@ export const SelectForm = ({ name_form, name_input, children }: Props) => {
                             <label className="px-1 text-[14px] cursor-pointer">
                                 <span className="text-slate-400">{name_input}</span>
                                 <select
+                                    value={value}
                                     name={name_form}
+                                    onChange={onChange}
                                     className=" w-full outline-none text-black cursor-pointer"
                                 >
                                     {children}
@@ -30,7 +34,7 @@ export const SelectForm = ({ name_form, name_input, children }: Props) => {
                         </>
                     )
                     :
-                    <h1 className="px-1 text-center">{name_input}</h1>
+                    <h1 className="px-1 text-center font-[400] text-[14px]">{name_input}</h1>
                 }
 
             </div>

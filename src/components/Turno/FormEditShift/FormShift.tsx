@@ -1,8 +1,8 @@
-import { FormEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useEffect, useCallback, useState } from "react"
 import { SelectForm } from "./SelectForm"
 import { DataPicker } from "@/components/DataPicker/DataPicker";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { ChangeSecondViewAction } from "@/libs/redux/feature/TurnoSlice.feature";
+import { ChangeSecondViewAction, ChangeShiftInformation } from "@/libs/redux/feature/TurnoSlice.feature";
 import { RootState } from "@/libs/redux/store/store";
 import cn from "@/utils/cn";
 import dayjs from "dayjs";
@@ -12,24 +12,37 @@ export const FormShift = () => {
     const turno = useSelector((state: RootState) => state.shift, shallowEqual);
     const dispatch = useDispatch();
 
-    const HandleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
 
-        const data = new FormData(event.currentTarget)
-        const values = Object.fromEntries(data.entries())
-
-        console.log(values);
-
+    const HandleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        dispatch(ChangeShiftInformation({ name: e.target.name, value: e.target.value }))
     }
-    
 
-    const { component, daySelect } = DataPicker({ firstDay: dayjs(new Date).toDate().toDateString(), lastDate: dayjs(new Date).toDate().toDateString() })
+    const { component, daySelect } = DataPicker({
+        firstDay: dayjs(turno.firstDay).toDate().toDateString(),
+        lastDate: dayjs(turno.lastDate).toDate().toDateString()
+    })
+
+    useEffect(() => {
+
+        if (turno.second_view_action == false) {
+            dispatch(ChangeShiftInformation({ name: 'end_date', value: daySelect.lastDate || '' }))
+            dispatch(ChangeShiftInformation({ name: 'start_date', value: daySelect.firstDay || '' }))
+        } else {
+            dispatch(ChangeShiftInformation({ name: 'support_end_date', value: daySelect.lastDate || '' }))
+            dispatch(ChangeShiftInformation({ name: 'support_start_date', value: daySelect.firstDay || '' }))
+        }
+
+    }, [daySelect.lastDate, daySelect.firstDay])
 
     return (
         <>
-            {/* <h2 className="mb-2   text-[16px]">Personal</h2> */}
-            <form onSubmit={HandleSubmit} className="flex flex-col gap-2 h-full">
-                <SelectForm name_form="shift" name_input="Turno" >
+            <form className="flex flex-col gap-2 h-full">
+                <SelectForm
+                    value={turno.shift_type}
+                    name_form="shift_type"
+                    name_input={turno.second_view_action ? "Turno Semanal Apoyo" : "Turno Semanal"}
+                    onChange={HandleChange}
+                >
                     {turno.second_view_action ? (
                         <option value={2}>
                             Turno semanal apoyo
@@ -40,20 +53,38 @@ export const FormShift = () => {
                         </option>
                     )}
                 </SelectForm>
-                <SelectForm name_form="staff" name_input="Personal" >
+                <SelectForm
+                    value={turno.second_view_action ? turno.support_staff : turno.staff}
+                    name_form={turno.second_view_action ? "support_staff" : "staff"}
+                    name_input="Personal"
+                    onChange={HandleChange}
+                >
                     <option>
                         Nombre personal
                     </option>
                     <option value={2} >Bryan Polo Gomez</option>
                 </SelectForm>
                 <input name="initial_date" value={""} hidden={true} />
-                <h1 className="text-[15px] px-1 text-slate-500 mt-1">Fecha de inicio y Fin del Turno</h1>
-                <div className="flex gap-8 px-1">
-                    <h1>{daySelect.firstDay}</h1>
-                    <h1>{daySelect.lastDate}</h1>
+                <div className="border rounded-lg px-3 py-2">
+                    <h1 className="text-[14px] px-1 text-slate-400 ">Fecha</h1>
+                    <div className="flex  flex-col px-1 ">
+                        <div className="font-[400] text-[15px] flex justify-between">
+                            <span className="w-[20px]">Inicio</span>
+                            <span>:</span>
+                            <span>
+                                {turno.firstDay.toISOString().substring(0, 10)} 18:00:00
+                            </span>
+                        </div>
+                        <div className="font-[400] text-[15px] flex justify-between">
+                            <span className="w-[20px]">Fin</span>
+                            <span>:</span>
+                            <span>
+                                {turno.lastDate.toISOString().substring(0, 10)} 07:59:59
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 {component}
-
             </form>
             <div className={cn(
                 turno.second_view_action ? "gap-2 justify-between" : "",
@@ -64,11 +95,11 @@ export const FormShift = () => {
                     onClick={() => dispatch(ChangeSecondViewAction())}
                 >
                     {turno.second_view_action ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="rotate-180" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M5 12l14 0"></path>
-                            <path d="M5 12l4 4"></path>
-                            <path d="M5 12l4 -4"></path>
+                            <path d="M13 18l6 -6"></path>
+                            <path d="M13 6l6 6"></path>
                         </svg>
                     ) : (
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -81,7 +112,7 @@ export const FormShift = () => {
 
                 </button>
                 {turno.second_view_action && (
-                    <button className="bg-sky-100 p-2 rounded-lg text-blue-300 hover:bg-sky-200 hover:text-blue-600 text-[14px] font-[400]">
+                    <button className=" p-2 rounded-lg bg-sky-200 text-blue-600 text-[14px] font-[400]">
                         Registrar turno
                     </button>
                 )

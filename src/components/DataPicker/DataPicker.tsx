@@ -1,14 +1,15 @@
 import { days, generateDate, months } from "@/utils/CalendarTS"
 import dayjs from "dayjs";
 import cn from "@/utils/cn"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
 
 const isBetween = require('dayjs/plugin/isBetween')
 dayjs.extend(isBetween);
 
-export const DataPicker = ({ firstDay, lastDate }: { firstDay: string, lastDate: string }): { component: React.ReactNode, daySelect: { firstDay?: string | boolean, lastDate?: string } } => {
+export const DataPicker = ({ firstDay, lastDate }: { firstDay: string, lastDate: string }): { component: React.ReactNode, daySelect: { firstDay?: string, lastDate?: string } } => {
     const currentDate = dayjs();
+
     const [today, setToday] = useState(currentDate);
     const [selectDate, setSelectDate] = useState(currentDate);
     const [isFirsSelection, setFirsSelection] = useState(true);
@@ -17,6 +18,13 @@ export const DataPicker = ({ firstDay, lastDate }: { firstDay: string, lastDate:
         firstDay: firstDay,
         lastDate: lastDate
     })
+
+    useEffect(() => {
+        setDateInfo({
+            firstDay: firstDay,
+            lastDate: lastDate
+        })
+    }, [firstDay, lastDate])
 
     return {
         component: (
@@ -92,12 +100,12 @@ export const DataPicker = ({ firstDay, lastDate }: { firstDay: string, lastDate:
                             >{date.date()}</h1>
                         </div>
                     )
-                }) }
+                })}
             </div >
         ),
         daySelect: {
-            firstDay: dayjs(dateInfo.firstDay).format('DD/MM/YYYY'),
-            lastDate: dayjs(dateInfo.lastDate).format('DD/MM/YYYY'),
+            firstDay: dayjs(dateInfo.firstDay).format(),
+            lastDate: dayjs(dateInfo.lastDate).format()
         }
     }
 }

@@ -14,17 +14,17 @@ export const CardFormShift = ({
     return (
         <section className="w-[400px] lg:w-[23rem] bg-white col-span-2 p-2 mx-2">
             <div className=" grid grid-cols-2 w-full mb-1">
-                <div className={cn(turno.second_view_action ? "bg-gray-300" : "bg-green-400", "p-[0.1px] ")} >
+                <div className={cn(turno.second_view_action ? "bg-gray-300" : "bg-green-200", "p-[0.1px] ")} >
                 </div>
-                <div className={cn(turno.second_view_action ? "bg-green-400" : "bg-gray-300", "p-[0.1px] ")} >
+                <div className={cn(turno.second_view_action ? "bg-green-200" : "bg-gray-300", "p-[0.1px] ")} >
                 </div>
             </div>
             <div className=" w-full px-2 flex items-center justify-between">
-                <h1 className="text-[15px] font-[500] mt-1">
-                    Informacion de Turno {turno.second_view_action ? 'Personal de apoyo' : ''}
+                <h1 className="text-[14px] font-[500] mt-1">
+                    Nuevo Turno
                 </h1>
                 <span
-                    className="cursor-pointer hover:text-red-600"
+                    className="cursor-pointer hover:text-red-600 hover:bg-red-200 hover:rounded-lg p-1"
                     onClick={() => dispatch(ChangeViewActionsShift({}))}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -38,8 +38,11 @@ export const CardFormShift = ({
                         <path d="M19 15l-4 0l0 4"></path>
                         <path d="M15 15l6 6"></path>
                     </svg>
-                   
+
                 </span>
+            </div>
+            <div className="w-full text-center font-[400]">
+                {turno.second_view_action ? 'Personal de Apoyo' : 'Turno Principal'}
             </div>
             <div className="min-h-[77vh] mt-3 px-3">
                 {children}

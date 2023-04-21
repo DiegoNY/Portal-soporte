@@ -12,6 +12,7 @@ const turno = () => {
         <CardTurno>
             {view_edit_shift ? <FormEditShift /> : <SearchTurno />}
             <Calendar />
+            <br/>
         </CardTurno>
     )
 }

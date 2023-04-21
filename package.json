@@ -9,6 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.5",
+    "@fullcalendar/daygrid": "^6.1.5",
+    "@fullcalendar/interaction": "^6.1.5",
+    "@fullcalendar/list": "^6.1.5",
+    "@fullcalendar/react": "^6.1.5",
+    "@fullcalendar/timegrid": "^6.1.5",
     "@prisma/client": "^4.13.0",
     "@reduxjs/toolkit": "^1.9.4",
     "@types/react": "18.0.35",
