@@ -60,7 +60,7 @@ export const FormShift = () => {
                 " w-full flex justify-end p-2   items-center  "
             )}>
                 <button
-                    className="p-2 hover:bg-sky-200 rounded-lg hover:text-blue-700"
+                    className="p-2 bg-sky-100 text-blue-300 hover:bg-sky-200 rounded-lg hover:text-blue-700 font-[400]"
                     onClick={() => dispatch(ChangeSecondViewAction())}
                 >
                     {turno.second_view_action ? (
@@ -81,7 +81,7 @@ export const FormShift = () => {
 
                 </button>
                 {turno.second_view_action && (
-                    <button className="bg-sky-200 p-2 rounded-lg text-blue-700 text-[14px] font-[500]">
+                    <button className="bg-sky-100 p-2 rounded-lg text-blue-300 hover:bg-sky-200 hover:text-blue-600 text-[14px] font-[400]">
                         Registrar turno
                     </button>
                 )

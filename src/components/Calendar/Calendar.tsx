@@ -9,7 +9,7 @@ export const CalendarUI = () => {
     const [selectDate, setSelectDate] = useState(currentDate);
     return (
         <>
-            <div className="grid grid-cols-7 w-full  p-1 h-full border"     >
+            <div className="grid grid-cols-7 w-full  p-1 h-full "     >
                 <div className="flex justify-between col-span-7 px-6 items-center bg-slate-100">
                     <div>
                         move 
@@ -21,7 +21,7 @@ export const CalendarUI = () => {
                         move 
                     </div>
                 </div>
-                <div className="col-span-7 grid grid-cols-7 w-full  ">
+                <div className="col-span-7 grid grid-cols-7 w-full border-t  ">
                     {days.map(day => {
                         return (
                             <h1 className="grid place-content-center">
