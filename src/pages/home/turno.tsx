@@ -6,13 +6,13 @@ import { RootState } from "@/libs/redux/store/store";
 import { shallowEqual, useSelector } from "react-redux";
 
 const turno = () => {
-    const { view_actions_shift: view_edit_shift } = useSelector((state: RootState) => state.shift, shallowEqual)
+    const { view_actions_shift } = useSelector((state: RootState) => state.shift, shallowEqual)
 
     return (
         <CardTurno>
-            {view_edit_shift ? <FormEditShift /> : <SearchTurno />}
+            {view_actions_shift ? <FormEditShift /> : <SearchTurno />}
             <Calendar />
-            <br/>
+            <br />
         </CardTurno>
     )
 }

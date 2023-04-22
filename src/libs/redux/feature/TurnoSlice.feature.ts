@@ -1,8 +1,38 @@
+import { ChangeSelectShiftDateStaff } from '@/types/Shift.reducer.type';
 import { Events, Shift } from '@/types/Shift.type';
 import { createSlice, } from '@reduxjs/toolkit';
 
 const shifts: Shift[] = []
 const events: Events[] = [];
+
+const ChangeSelectShiftDateStaff = (state: ChangeSelectShiftDateStaff, start_date: Date, end_date: Date) => {
+    state.start_date = start_date;
+    state.end_date = end_date;
+    const index = state.events.findIndex(item => item.id == 1)
+    if (index == -1) {
+        state.events = [
+            { title: "Turno principal", date: start_date.toISOString().substring(0, 10), end: end_date.toISOString().substring(0, 10), id: 1 },
+            { title: "Turno apoyo", date: '', end: '', id: 2 }
+        ]
+    } else {
+        state.events[index].date = start_date.toISOString().substring(0, 10);
+        state.events[index].end = end_date.toISOString().substring(0, 10);
+    }
+}
+const ChangeSelectShiftDateSupportStaff = (state: ChangeSelectShiftDateStaff, start_date: Date, end_date: Date) => {
+    state.support_start_date = start_date;
+    state.support_end_date = end_date;
+    const index = state.events.findIndex(item => item.id == 2)
+    if (index == -1) {
+        state.events = [
+            { title: "Turno principal", date: '', end: '', id: 1 },
+            { title: "Turno apoyo", date: start_date.toISOString().substring(0, 10), end: end_date.toISOString().substring(0, 10), id: 2 }
+        ]
+    } else {
+        state.events[index].date = start_date.toISOString().substring(0, 10);
+        state.events[index].end = end_date.toISOString().substring(0, 10);
+    }
+}
 
 export const turnoSlice = createSlice({
     name: 'navigation',
@@ -58,8 +88,8 @@ export const turnoSlice = createSlice({
                 shift.support_end_time = state.support_end_time;
 
                 state.events = [
-                    { title: "Turno principal", date: '2023-04-23', end: '2023-04-30' },
-                    { title: "Turno apoyo", date: '2023-04-27', end: '2023-05-07' }
+                    { title: "Turno principal", date: '2023-04-23', end: '2023-04-30', id: 1 },
+                    { title: "Turno apoyo", date: '2023-04-27', end: '2023-05-07', id: 2 }
                 ]
             } else {
                 state.id = 0
@@ -95,8 +125,21 @@ export const turnoSlice = createSlice({
                 state.lastDate = state.end_date;
             }
         },
-        SeeTurn: state => {
+        SeeTurn: (state, actions) => {
+            const { support_end_date, support_start_date, start_date, end_date }: {
+                support_start_date: string,
+                support_end_date: string,
+                start_date: string,
+                end_date: string,
+            } = actions.payload;
+
             state.see_turn = !state.see_turn;
+
+            state.events = [
+                { title: "Turno principal", date: start_date, end: end_date, id: 1 },
+                { title: "Turno apoyo", date: support_start_date, end: support_end_date, id: 2 }
+            ]
+
         },
         ChangeShiftInformation: (state, actions: { payload: { name: keyof Shift | string, value: string | Date | number }, type: string }) => {
             const { name, value } = actions.payload;
@@ -157,9 +200,21 @@ export const turnoSlice = createSlice({
                     break;
             }
         },
+        SelectShiftDates: (state, action: { payload: { start_date: Date, end_date: Date }, type: string }) => {
+            const { start_date, end_date } = action.payload;
+            state.view_actions_shift = true;
+
+            if (state.second_view_action == true) {
+                ChangeSelectShiftDateSupportStaff(state, start_date, end_date)
+            } else {
+                ChangeSelectShiftDateStaff(state, start_date, end_date);
+            }
+            state.lastDate = end_date;
+            state.firstDay = start_date;
+        }
     }
 });
 
-export const { ChangeViewActionsShift, ChangeSecondViewAction, SeeTurn, ChangeShiftInformation } = turnoSlice.actions;
+export const { ChangeViewActionsShift, ChangeSecondViewAction, SeeTurn, ChangeShiftInformation, SelectShiftDates } = turnoSlice.actions;
 
 export default turnoSlice.reducer

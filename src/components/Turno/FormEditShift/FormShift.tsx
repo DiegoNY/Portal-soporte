@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useCallback, useState } from "react"
+import { ChangeEvent, useEffect, useCallback, useState } from "react"
 import { SelectForm } from "./SelectForm"
 import { DataPicker } from "@/components/DataPicker/DataPicker";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
@@ -64,7 +64,6 @@ export const FormShift = () => {
                     </option>
                     <option value={2} >Bryan Polo Gomez</option>
                 </SelectForm>
-                <input name="initial_date" value={""} hidden={true} />
                 <div className="border rounded-lg px-3 py-2">
                     <h1 className="text-[14px] px-1 text-slate-400 ">Fecha</h1>
                     <div className="flex  flex-col px-1 ">

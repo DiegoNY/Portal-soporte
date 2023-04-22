@@ -30,7 +30,22 @@ export const ItemTurno = () => {
     }
 
     const SeeTurnUI = () => {
-        dispatch(SeeTurn())
+        dispatch(SeeTurn({
+            id: 1,
+            staff: 1,
+            start_date: '2023-03-02',
+            start_time: '00:00:00',
+            end_date: '2023-03-06',
+            end_time: '00:00:00',
+            shift_type: 0,
+            year: '2023',
+            month: '01',
+            support_staff: 0,
+            support_start_date: '2023-03-08',
+            support_start_time: '00:00:00',
+            support_end_date: '2023-03-16',
+            support_end_time: '00:00:00',
+        }))
     }
 
     return (

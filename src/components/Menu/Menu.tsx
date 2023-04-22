@@ -175,7 +175,7 @@ const Menu = () => {
 
     return (
         <nav className="hidden flex-none  w-56 lg:flex flex-col   items-center p-2  bg-slate-100">
-            <div className="h-1/2 mt-4 gap-1.5 flex flex-col w-full text-sm">
+            <div className="max-h-screen mt-4 gap-1.5 flex flex-col w-full text-sm overflow-y-scroll">
                 {Items.map((item, index) => {
 
                     if (item.submenu) {

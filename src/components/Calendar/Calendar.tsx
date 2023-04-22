@@ -4,15 +4,17 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import esLocale from '@fullcalendar/core/locales/es';
 import interactionPlugin from '@fullcalendar/interaction'; // for selectable
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/libs/redux/store/store";
 import { useEffect, useState } from 'react';
+import { SelectShiftDates } from "@/libs/redux/feature/TurnoSlice.feature";
 
 export const CalendarUI = () => {
     const shift = useSelector((state: RootState) => state.shift, shallowEqual);
     const [events, setEvents] = useState(shift.events)
-
+    const dispatch = useDispatch()
     useEffect(() => {
+        console.log(shift)
         setEvents(shift.events);
     }, [shift.events])
 
@@ -36,17 +38,13 @@ export const CalendarUI = () => {
                         end: ""
                     }
                 }
-
                 allDayClassNames={"red"}
                 events={events}
                 locale={esLocale}
                 selectable={true} // habilita la selección de fechas
-                selectOverlap={false} // deshabilita la superposición de eventos en las fechas seleccionadas
                 select={(e) => {
-                    console.log(e.start)
-                    console.log(e.end)
+                    dispatch(SelectShiftDates({ start_date: new Date(e.start), end_date: new Date(e.end) }))
                 }}
-
 
             />
 

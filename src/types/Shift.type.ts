@@ -38,4 +38,5 @@ export type Events = {
     title: string
     date: string
     end: string
+    id: number
 } 
