@@ -174,8 +174,18 @@ const Menu = () => {
     ]
 
     return (
-        <nav className="hidden flex-none  w-56 lg:flex flex-col   items-center p-2  bg-slate-100">
-            <div className="max-h-screen mt-4 gap-1.5 flex flex-col w-full text-sm overflow-y-scroll">
+        <nav className="hidden flex-none  w-56 lg:flex flex-col   items-center p-2  bg-white">
+            <div className="p-3  rounded-full my-3 bg-yellow-300">
+                <svg version="1.1" viewBox="0 0 20 20" x="0px" y="0px" className="h-10">
+                    <g>
+                        <path fill-rule="evenodd" d="M5 7a5 5 0 116.192 4.857A2 2 0 0013 13h1a3 3 0 013 3v2h-2v-2a1 1 0 00-1-1h-1a3.99 3.99 0 01-3-1.354A3.99 3.99 0 017 15H6a1 1 0 00-1 1v2H3v-2a3 3 0 013-3h1a2 2 0 001.808-1.143A5.002 5.002 0 015 7zm5 3a3 3 0 110-6 3 3 0 010 6z" clip-rule="evenodd">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+            <h1 className="text-[14px]  w-full px-2">Bienvenido (a) : </h1>
+            <p className="text-[14px] text-center mb-1">70401296 - Bryan Polo Gomez</p>
+            <div className="max-h-[32rem] mt-4 gap-1.5 flex flex-col w-full text-sm overflow-y-scroll">
                 {Items.map((item, index) => {
 
                     if (item.submenu) {

@@ -9,6 +9,9 @@ export const SearchTurno = () => {
             <ItemTurno />
             <ItemTurno />
             <ItemTurno />
+            <ItemTurno />
+            <ItemTurno />
+
         </CardSearchTurno>
     )
 }

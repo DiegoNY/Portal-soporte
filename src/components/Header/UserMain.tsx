@@ -32,7 +32,7 @@ const UserMain = () => {
     return (
         <div className="fixed mt-[3.4rem] right-2 w-[220px]  p-2 bg-[#ffff] border-[1px] border-[#f5ededf8]  shadow-slate-100 shadow-sm rounded-lg flex flex-col gap-2">
             <ul className="flex gap-2 items-center px-1 my-3 ">
-                <li className="bg-sky-300 rounded-full p-1">
+                <li className="bg-sky-200 rounded-full p-1">
                     <svg version="1.1" viewBox="0 0 20 20" x="0px" y="0px" className=" h-[27px] w-max">
                         <g>
                             <path
@@ -45,7 +45,7 @@ const UserMain = () => {
                     </svg>
                 </li>
                 <span className="text-[14px] font-[500] tracking-tight">
-                    Usuario3030
+                    Bryan Polo Gomez
                 </span>
             </ul>
             <div className="border-t-[1px]"></div>
