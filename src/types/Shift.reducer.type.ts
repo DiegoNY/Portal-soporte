@@ -1,5 +1,5 @@
 import { Events, Shift } from "./Shift.type";
 
-interface ChangeSelectShiftDateStaff extends Shift {
+export interface ChangeSelectShiftDateStaff extends Shift {
     events: Events[]
 }
