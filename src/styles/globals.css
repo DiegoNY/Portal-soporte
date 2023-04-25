@@ -111,6 +111,11 @@ table.fc-scrollgrid.fc-scrollgrid-liquid {
   background-color: #85EDAC;
 }
 
+::-webkit-scrollbar:horizontal {
+  background-color: #000000; /* color de la barra */
+  height: 5px;
+}
+
 .modal_style {
   background-color: rgba(0, 0, 0, 0.5);
 }
