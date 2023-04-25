@@ -110,3 +110,7 @@ table.fc-scrollgrid.fc-scrollgrid-liquid {
 .custom-scroll::-webkit-scrollbar-thumb:hover {
   background-color: #85EDAC;
 }
+
+.modal_style {
+  background-color: rgba(0, 0, 0, 0.5);
+}
