@@ -64,10 +64,10 @@ export const PresentationIncidents = () => {
     { headerName: "Sucursal", field: "branch", width: 120 },
     { headerName: "Contacto", field: "contact" },
     { headerName: "Registrada", field: "registered" },
-    { headerName: "Tecnico", field: "technical", width: 110 },
+    { headerName: "Tecnico", field: "technical", width: 160 },
     { headerName: "Estacion", field: "season", width: 67 },
     { headerName: "Atencion", field: "attention", width: 120 },
-    { headerName: "Informe", field: "report", width: 170 },
+    { headerName: "Informe", field: "report", width: 280 },
     {
       headerName: "Estado",
       field: "state",
@@ -90,7 +90,7 @@ export const PresentationIncidents = () => {
 
   return (
     <CardPresentationIncidents>
-      <div className="col-span-full h-full" style={{ height: "70vh" }}>
+      <div className="col-span-full h-full bg-white" style={{ height: "70vh" }}>
         <DataGrid
           rows={rows}
           columns={columns}
@@ -107,6 +107,16 @@ export const PresentationIncidents = () => {
           getRowHeight={() => "auto"}
           slots={{
             toolbar: GridToolbar,
+          }}
+          sx={{
+            "& .MuiDataGrid-cell": {
+              fontSize: "13px",
+              padding: "0.2rem",
+              textAlign: "center",
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              textAlign: "center",
+            },
           }}
         />
         <br />

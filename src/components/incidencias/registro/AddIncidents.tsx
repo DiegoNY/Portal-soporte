@@ -1,10 +1,42 @@
+import { Modal } from "@/components/Modal/Modal";
+import { ChangeIssueView } from "@/libs/redux/feature/Incidents.feature";
+import { useDispatch } from "react-redux";
+
 export const AddIncidents = () => {
+  const dispatch = useDispatch();
   return (
-    <div className="absolute z-50 top-0 left-0 bg-transparent w-full h-full justify-center flex modal_style">
-      <div className=" fixed top-10 rounded-xl bg-white border ">
-        <div className="flex P-2">
-          <span className="px-5">X</span>
-          <h1 className="font-[500] text-center w-full">Nueva Incidencia N°23-7635</h1>
+    <Modal>
+      <div className=" fixed bottom-0 sm:bottom-auto sm:top-10  top-16 rounded-t-xl sm:rounded-xl bg-white border p-2 ">
+        <div className="flex p-2">
+          <div
+            className="px-1 py-2  hover:text-red-400 cursor-pointer"
+            onClick={() => dispatch(ChangeIssueView())}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M5 9l4 0l0 -4"></path>
+              <path d="M3 3l6 6"></path>
+              <path d="M5 15l4 0l0 4"></path>
+              <path d="M3 21l6 -6"></path>
+              <path d="M19 9l-4 0l0 -4"></path>
+              <path d="M15 9l6 -6"></path>
+              <path d="M19 15l-4 0l0 4"></path>
+              <path d="M15 15l6 6"></path>
+            </svg>
+          </div>
+          <h1 className="font-[500] text-center w-full p-1">
+            Nueva Incidencia N°23-7635
+          </h1>
         </div>
         <p className="text-[14px]">completar todos los campos obligatorios</p>
         <div className="flex  p-2 items-center">
@@ -65,7 +97,6 @@ export const AddIncidents = () => {
           </div>
         </div>
       </div>
-    </div>
-
+    </Modal>
   );
 };

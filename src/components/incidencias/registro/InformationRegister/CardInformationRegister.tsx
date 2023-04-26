@@ -12,9 +12,9 @@ export const CardInformationRegister = ({
   Class?: string;
 }) => {
   return (
-    <div className={cn("px-1 py-1.5 text-center gap-1", Class)}>
+    <div className={cn("px-1 py-1.5 text-center gap-1 ", Class)}>
       {" "}
-      <h1 className="text-[14px] flex gap-0.5">
+      <h1 className="text-[14px] flex gap-0.5 w-full items-center justify-center">
         <span>{icon}</span>
         {title}
       </h1>

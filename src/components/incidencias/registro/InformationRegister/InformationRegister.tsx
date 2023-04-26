@@ -7,8 +7,8 @@ export const InformationRegister = () => {
 
   return (
     <div className=" min-h-[110px]  col-span-full grid grid-cols-2 lg:grid-cols-6 md:grid-cols-4">
-      <div className=" flex items-center  flex-col p-1">
-        <p className="text-[13px] mt-0.5 text-green-700">
+      <div className="hidden sm:flex items-center  flex-col p-1 gap-1 ">
+        <p className="text-xs mt-0.5 text-green-700 text-center">
           Para registrar una nueva incidencia de click
         </p>
         <button
@@ -44,8 +44,8 @@ export const InformationRegister = () => {
         icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             stroke-width="2"
             stroke="currentColor"
@@ -131,7 +131,7 @@ export const InformationRegister = () => {
       <CardInformationRegister
         title="Clientes Registrados"
         amount={222}
-        Class="md:col-start-3 lg:col-auto"
+        Class="flex col-span-2 sm:col-auto justify-center sm:justify-start flex-col items-center md:col-start-3 lg:col-auto"
         icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -79,17 +79,17 @@ table.fc-scrollgrid.fc-scrollgrid-liquid {
 
 ::-webkit-scrollbar {
   width: 4px;
-  border-radius: 0.2rem;
+  border-radius: 1rem;
 }
 
 /* Fondo del scrollbar */
 ::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
+  background-color: #ffff;
 }
 
 /* Color del scrollbar */
 ::-webkit-scrollbar-thumb {
-  background-color: #888;
+  background-color: #d1d1d1;
 }
 
 /* Hover del scrollbar */
