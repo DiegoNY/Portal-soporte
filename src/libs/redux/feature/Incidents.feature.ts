@@ -34,14 +34,40 @@ export const Incidents = createSlice({
         state: 1,
       },
     ],
+    company: "",
+    business_name: "",
+    branch: 0,
+    contact_name: "",
+    dni: 0,
+    post: 0,
+    phone: 0,
+    mail: "",
+    station_type: 0,
+    priority: 0,
+    level: 0,
+    category: 0,
+    subcategory: 0,
+    date: "",
+    hour: "",
+    view_detail: false,
+    data_detail: {},
   },
   reducers: {
     ChangeIssueView: (state) => {
       state.incident_record = !state.incident_record;
     },
+    ChangeViewDetail: (state, action) => {
+      const { data } = action.payload;
+      if (state.view_detail == false) {
+        state.view_detail = true;
+        state.data_detail = data;
+      } else {
+        state.view_detail = false;
+      }
+    },
   },
 });
 
-export const { ChangeIssueView } = Incidents.actions;
+export const { ChangeIssueView, ChangeViewDetail } = Incidents.actions;
 
 export default Incidents.reducer;

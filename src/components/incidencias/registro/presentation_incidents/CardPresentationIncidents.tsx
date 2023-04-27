@@ -5,7 +5,7 @@ export const CardPresentationIncidents = ({
 }) => {
   return (
     <div className="  mx-3 h-[70vh]  col-span-full flex flex-col gap-3">
-      <h1 className="text-[14px] text-slate-400 mt-1 font-[400]">
+      <h1 className="text-[14px] text-[#7E7E7E] mt-1 font-[400]">
         Incidencias Registradas Clientes - Tecnicos
       </h1>
       <div className="min-h-[95%] ">

@@ -1,7 +1,10 @@
+import { LayoutPrincipal } from "@/components/LayoutPrincipal";
 
 const Resueltas = () => {
-    return (
-        <div>resueltas</div>
-    )
-}
+  return (
+    <LayoutPrincipal>
+      <div>resueltas</div>
+    </LayoutPrincipal>
+  );
+};
 export default Resueltas;

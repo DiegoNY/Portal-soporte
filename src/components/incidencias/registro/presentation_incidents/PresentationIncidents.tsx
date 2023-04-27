@@ -3,6 +3,7 @@ import { Actions } from "./Actions";
 import { CardPresentationIncidents } from "./CardPresentationIncidents";
 import { DataGrid, esES, GridToolbar } from "@mui/x-data-grid";
 import { RootState } from "@/libs/redux/store/store";
+import { CustomToolbar } from "@/components/DataGrid/CustomToolbar";
 
 const Proceso = () => {
   return (
@@ -106,7 +107,7 @@ export const PresentationIncidents = () => {
           }}
           getRowHeight={() => "auto"}
           slots={{
-            toolbar: GridToolbar,
+            toolbar: CustomToolbar,
           }}
           sx={{
             "& .MuiDataGrid-cell": {

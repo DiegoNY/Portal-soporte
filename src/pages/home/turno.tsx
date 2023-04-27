@@ -1,24 +1,29 @@
 import { Calendar } from "@/components/Turno/Calendar";
-import { CardTurno } from "@/components/Turno/CardTurno"
+import { CardTurno } from "@/components/Turno/CardTurno";
 import { FormEditShift } from "@/components/Turno/FormEditShift";
 import { SearchTurno } from "@/components/Turno/SearchTurno";
 import { RootState } from "@/libs/redux/store/store";
 import { shallowEqual, useSelector } from "react-redux";
+import { LayoutPrincipal } from "@/components/LayoutPrincipal";
 
 const turno = () => {
-    const { view_actions_shift } = useSelector((state: RootState) => state.shift, shallowEqual)
+  const { view_actions_shift } = useSelector(
+    (state: RootState) => state.shift,
+    shallowEqual
+  );
 
-    return (
-        <CardTurno>
-            {view_actions_shift ? <FormEditShift /> : <SearchTurno />}
-            <Calendar />
-            <br />
-        </CardTurno>
-    )
-}
+  return (
+    <LayoutPrincipal>
+      <CardTurno>
+        {view_actions_shift ? <FormEditShift /> : <SearchTurno />}
+        <Calendar />
+        <br />
+      </CardTurno>
+    </LayoutPrincipal>
+  );
+};
 
 export default turno;
-
 
 // export const getServerSideProps: GetServerSideProps = async () => {
 //     const data1 = await prisma.areas.findFirst({

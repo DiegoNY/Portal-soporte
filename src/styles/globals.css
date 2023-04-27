@@ -86,6 +86,12 @@ table.fc-scrollgrid.fc-scrollgrid-liquid {
 ::-webkit-scrollbar-track {
   background-color: #ffff;
 }
+.menu::-webkit-scrollbar-track {
+  background-color: none;
+}
+.menu::-webkit-scrollbar-thumb {
+  background-color:rgba(225, 225, 225, 0.1);
+}
 
 /* Color del scrollbar */
 ::-webkit-scrollbar-thumb {

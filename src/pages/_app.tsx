@@ -1,13 +1,7 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-
-import Login from './login';
-
-import { Provider } from 'react-redux'
-import store from '@/libs/redux/store/store';
-import Layout from '@/components/Layout';
-import Header from '@/components/Header/Header';
-import Main from '@/components/Main';
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import { Provider } from "react-redux";
+import store from "@/libs/redux/store/store";
 
 export default function App({ Component, pageProps }: AppProps) {
   // const t = false;
@@ -17,13 +11,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
-        <Layout>
-          <Header />
-          <Main>
-            <Component {...pageProps} />
-          </Main>
-        </Layout>
+        <Component {...pageProps} />
       </Provider>
     </>
-  )
+  );
 }

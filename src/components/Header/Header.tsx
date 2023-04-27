@@ -1,6 +1,7 @@
 import { RootState } from "@/libs/redux/store/store";
 import UserMain from "./UserMain";
 import { useSelector, useDispatch } from "react-redux";
+
 import {
   ChangeUserMain,
   changeMain,
@@ -10,13 +11,19 @@ const Header = () => {
   /**Reducers */
   const navigation = useSelector((state: RootState) => state.navigation);
   const dispatch = useDispatch();
-  const ChangeMenuUser = () => dispatch(ChangeUserMain());
+  const ChangeMenuUser = (e: any) => {
+    e.stopPropagation();
+    dispatch(ChangeUserMain());
+  };
 
   return (
     <header className=" fixed z-40 h-14 bg-gradient-to-b from-white to-transparent w-full px-2 flex border-b">
       <div
         className="swap-rotate btn swap btn-circle border-none bg-transparent hover:bg-transparent lg:hidden items-center flex cursor-pointer"
-        onClick={() => dispatch(changeMain())}
+        onClick={(e) => {
+          e.stopPropagation();
+          dispatch(changeMain());
+        }}
       >
         <svg
           className="swap-off fill-current"
@@ -53,7 +60,7 @@ const Header = () => {
       <div className="flex h-full items-center justify-center ">
         <div
           className="p-2 hover:bg-[#81858133] rounded-lg cursor-pointer "
-          onClick={ChangeMenuUser}
+          onClick={(e) => ChangeMenuUser(e)}
         >
           <svg
             version="1.1"

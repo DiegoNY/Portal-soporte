@@ -12,7 +12,7 @@ export const InformationRegister = () => {
           Para registrar una nueva incidencia de click
         </p>
         <button
-          className="flex w-[180px]  bg-sky-200  items-center justify-center rounded-lg py-1.5 px-2 text-blue-700 hover:font-[400] text-[15px] hover:bg-sky-200 hover:text-blue-500"
+          className="flex w-[180px]  bg-[#007bff]  items-center justify-center rounded-md py-1.5 px-2 text-[#fff]  text-[15px]  hover:bg-[#007bfffa]"
           onClick={() => dispatch(ChangeIssueView())}
         >
           <span>

@@ -5,7 +5,9 @@ import { ChangeElementDelete } from "@/libs/redux/feature/NavigationSlice.featur
 import { RootState } from "@/libs/redux/store/store";
 
 export const Actions = ({ incidence_id }: { incidence_id: number }) => {
-  const navigation = useSelector((state: RootState) => state.navigation);
+  const { elementDeleted } = useSelector(
+    (state: RootState) => state.navigation
+  );
   const [viewACtions, setViewActions] = useState(false);
   const dispatch = useDispatch();
 
@@ -14,8 +16,8 @@ export const Actions = ({ incidence_id }: { incidence_id: number }) => {
       className="w-full flex justify-center cursor-pointer items-center"
       onClick={(e) => {
         e.stopPropagation();
-        setViewActions(true);
-        navigation.elementDeleted(false);
+        elementDeleted(false);
+        setViewActions(!viewACtions);
         dispatch(ChangeElementDelete({ ref: setViewActions }));
       }}
     >

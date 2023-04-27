@@ -1,12 +1,22 @@
+import { useDispatch } from "react-redux";
+import { ButtonAction } from "./ButtonAction";
+import { ChangeViewDetail } from "@/libs/redux/feature/Incidents.feature";
+
 export const ActionsButtons = () => {
+  const dispatch = useDispatch();
   return (
-    <div className="border p-2 fixed mt-48 bg-white w-[170px] mr-20 z-20 rounded-lg actions-flotant">
-      <button className="   flex items-center  p-0.5 gap-1 w-full ">
-        <span className="text-blue-500 ">
+    <div
+      className="border py-6 px-3 fixed mt-44 font-[14px] bg-white w-[170px] mr-20 z-20 rounded-lg actions-flotant border-[#EEEDED] shadow-xl"
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
+      <ButtonAction
+        icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             stroke-width="2"
             stroke="currentColor"
@@ -25,15 +35,15 @@ export const ActionsButtons = () => {
             <path d="M15.97 17.25l1.3 .75"></path>
             <path d="M20.733 20l1.3 .75"></path>
           </svg>
-        </span>
-        <h1>Asignar personal</h1>
-      </button>
-      <button className="p-0.5 flex  gap-1 rounded-lg items-center  w-full">
-        <span className="text-yellow-400">
+        }
+        title="Asignar personal"
+      />
+      <ButtonAction
+        icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             stroke-width="2"
             stroke="currentColor"
@@ -47,15 +57,18 @@ export const ActionsButtons = () => {
             <path d="M9 17h6"></path>
             <path d="M9 13h6"></path>
           </svg>
-        </span>
-        <h1>Llenar Orden</h1>
-      </button>
-      <button className="  gap-1 rounded-lg p-0.5 flex items-center w-full ">
-        <span className="text-blue-700">
+        }
+        title="Llenar Orden"
+      />
+      <ButtonAction
+        onClick={() => {
+          dispatch(ChangeViewDetail({}));
+        }}
+        icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             stroke-width="2"
             stroke="currentColor"
@@ -74,15 +87,15 @@ export const ActionsButtons = () => {
             <path d="M15.97 17.25l1.3 .75"></path>
             <path d="M20.733 20l1.3 .75"></path>
           </svg>
-        </span>
-        <h1>Ver Detalle</h1>
-      </button>
-      <button className="w-full p-0.5  rounded-lg flex items-center gap-1">
-        <span className="text-emerald-500">
+        }
+        title="Ver Detalle"
+      />
+      <ButtonAction
+        icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             stroke-width="2"
             stroke="currentColor"
@@ -95,15 +108,15 @@ export const ActionsButtons = () => {
             <path d="M16 7h4"></path>
             <path d="M18 19h-13a2 2 0 1 1 0 -4h4a2 2 0 1 0 0 -4h-3"></path>
           </svg>
-        </span>
-        <h1>Editar Incidencia</h1>
-      </button>
-      <button className="  p-0.5 gap-1 w-full rounded-lg flex items-center">
-        <span className="text-red-500">
+        }
+        title="Editar Incidencia"
+      />
+      <ButtonAction
+        icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             stroke-width="2"
             stroke="currentColor"
@@ -118,9 +131,9 @@ export const ActionsButtons = () => {
             <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
             <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
           </svg>
-        </span>
-        <h1>Eliminar</h1>
-      </button>
+        }
+        title="Eliminar"
+      />
     </div>
   );
 };

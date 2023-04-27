@@ -229,11 +229,11 @@ const Menu = () => {
   return (
     <nav
       className={cn(
-        navigation.main ? "flex fixed bg-white z-40 sm:static" : "hidden",
-        " flex-none  w-56 lg:flex flex-col   items-center p-2  bg-white"
+        navigation.main ? "flex fixed bg-white z-40 " : "hidden",
+        " flex-none  w-56 lg:flex flex-col   items-center p-2  bg-white shadow-2xl lg:static border-r border-[#EEEDED] "
       )}
     >
-      <div className="p-3  rounded-full my-3 bg-yellow-300">
+      <div className="p-3  rounded-full my-3 bg-yellow-300 ">
         <svg version="1.1" viewBox="0 0 20 20" x="0px" y="0px" className="h-10">
           <g>
             <path
@@ -244,11 +244,13 @@ const Menu = () => {
           </g>
         </svg>
       </div>
-      <h1 className="text-[14px]  w-full px-2">Bienvenido (a) : </h1>
-      <p className="text-[14px] text-center mb-1">
+      <h1 className="text-[14px]  w-full px-2 font-[500] mt-2">
+        Bienvenido (a) :{" "}
+      </h1>
+      <p className="text-[14px] text-center mb-2">
         70401296 - Bryan Polo Gomez
       </p>
-      <div className="h-[62vh]  mt-4 gap-1.5 flex flex-col w-full text-sm overflow-y-scroll">
+      <div className="h-[62vh]  mt-4 gap-1.5 flex flex-col w-full text-sm overflow-y-scroll menu">
         {Items.map((item, index) => {
           if (item.submenu) {
             return (
