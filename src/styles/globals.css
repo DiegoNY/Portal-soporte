@@ -86,11 +86,13 @@ table.fc-scrollgrid.fc-scrollgrid-liquid {
 ::-webkit-scrollbar-track {
   background-color: #ffff;
 }
+
 .menu::-webkit-scrollbar-track {
   background-color: none;
 }
+
 .menu::-webkit-scrollbar-thumb {
-  background-color:rgba(225, 225, 225, 0.1);
+  background-color: rgba(225, 225, 225, 0.1);
 }
 
 /* Color del scrollbar */
@@ -118,7 +120,8 @@ table.fc-scrollgrid.fc-scrollgrid-liquid {
 }
 
 ::-webkit-scrollbar:horizontal {
-  background-color: #000000; /* color de la barra */
+  background-color: #000000;
+  /* color de la barra */
   height: 5px;
 }
 

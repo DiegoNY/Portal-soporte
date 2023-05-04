@@ -6,16 +6,23 @@ import esLocale from '@fullcalendar/core/locales/es';
 import interactionPlugin from '@fullcalendar/interaction'; // for selectable
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/libs/redux/store/store";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SelectShiftDates } from "@/libs/redux/feature/TurnoSlice.feature";
-
-export const CalendarUI = () => {
+const CalendarUI = () => {
     const shift = useSelector((state: RootState) => state.shift, shallowEqual);
-    const [events, setEvents] = useState(shift.events)
+    const [events, setEvents] = useState([])
     const dispatch = useDispatch()
     useEffect(() => {
         console.log(shift)
-        setEvents(shift.events);
+        const event_custom: any = []
+        shift.events.map(event => {
+            event_custom.push({
+                title: event.title,
+                date: event.date,
+                end: event.end
+            })
+        })
+        setEvents(event_custom);
     }, [shift.events])
 
     return (
@@ -33,9 +40,9 @@ export const CalendarUI = () => {
 
                 headerToolbar={
                     {
-                        left: "prev,next today",
+                        start: "prev",
                         center: "title",
-                        end: ""
+                        end: "next"
                     }
                 }
                 allDayClassNames={"red"}
@@ -55,4 +62,4 @@ export const CalendarUI = () => {
     )
 }
 
-
+export default React.memo(CalendarUI)
