@@ -1,8 +1,10 @@
 import { useDispatch } from "react-redux";
 import { ButtonAction } from "./ButtonAction";
 import { ChangeViewDetail } from "@/libs/redux/feature/Incidents.feature";
+import { useRouter } from "next/router";
 
 export const ActionsButtons = () => {
+  const route = useRouter();
   const dispatch = useDispatch();
   return (
     <div
@@ -12,6 +14,9 @@ export const ActionsButtons = () => {
       }}
     >
       <ButtonAction
+        onClick={() => {
+          route.push("/home/incidencias/asignacion?Incidencia=" + "23-23255");
+        }}
         icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"

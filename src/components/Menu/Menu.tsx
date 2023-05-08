@@ -1,7 +1,7 @@
 import cn from "@/utils/cn";
 import ItemMenu from "./itemMenu";
 import ItemSubMenu from "./itemSubMenu";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import { RootState } from "@/libs/redux/store/store";
 
 const Menu = () => {
@@ -223,7 +223,7 @@ const Menu = () => {
       ],
     },
   ];
-
+  const user = useSelector((state: RootState) => state.user, shallowEqual);
   const navigation = useSelector((state: RootState) => state.navigation);
 
   return (
@@ -248,7 +248,7 @@ const Menu = () => {
         Bienvenido (a) :{" "}
       </h1>
       <p className="text-[14px] text-center mb-2">
-        70401296 - Bryan Polo Gomez
+        {user.dni} - {user.name}
       </p>
       <div className="h-[62vh]  mt-4 gap-1.5 flex flex-col w-full text-sm overflow-y-scroll menu">
         {Items.map((item, index) => {

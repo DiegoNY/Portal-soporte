@@ -43,90 +43,90 @@ export const AddIncidents = () => {
         </p>
         <div className="overflow-y-scroll sm:overflow-auto max-h-[70vh]">
           <div className="flex flex-col sm:flex-row p-1 mt-1 sm:mt-0 sm:p-2 mx-[18px]  items-center gap-2">
-            <h1 className=" w-full ml-1 sm:ml-0 sm:w-[170px] font-[16px] text-[#222222]">
+            <h1 className=" w-full ml-1 sm:ml-0 sm:w-[170px] font-[16px] text-[15px] text-[#222222]">
               Empresa*
             </h1>
             <div className="grid grid-cols-2 sm:grid-cols-3  border rounded-md w-full  ">
               <input
-                className="p-2 h-full bg-inherit border-r border-b col-span-full sm:border-b-0 sm:col-span-1 "
-                placeholder="RUC EMPRESA"
+                className="p-2 h-full bg-inherit border-r border-b col-span-full sm:border-b-0 sm:col-span-1 text-[15px] "
+                placeholder="RUC Empresa"
               />
               <input
-                className="p-2 bg-inherit border-r border-b sm:border-b-0 col-span-full sm:col-span-1"
-                placeholder="RAZON SOCIAL"
+                className="p-2 bg-inherit border-r border-b sm:border-b-0 col-span-full sm:col-span-1 text-[15px] "
+                placeholder="Razon social"
               />
-              <select className="p-2 w-full bg-inherit col-span-full  sm:col-span-1">
+              <select className="p-2 w-full bg-inherit col-span-full  sm:col-span-1 text-[15px]">
                 <option>Seleccione sucursal</option>
               </select>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row p-1 sm:px-2 mx-[18px] gap-2  items-center">
-            <h1 className=" w-full ml-1 sm:ml-0 sm:w-[170px] font-[16px]   text-[#222222]">
+            <h1 className=" w-full ml-1 sm:ml-0 sm:w-[170px] font-[16px]  text-[15px]  text-[#222222]">
               Contacto*
             </h1>
             <div className="grid grid-cols-2 sm:grid-cols-3  border rounded-md w-full">
               <input
-                className="p-2 border-b border-r bg-inherit col-span-2 sm:col-span-1 "
-                placeholder="NOMBRE"
+                className="p-2 border-b border-r bg-inherit col-span-2 sm:col-span-1 text-[15px]  "
+                placeholder="Nombre"
               />
               <input
-                className="p-2 border-b bg-inherit col-span-2 sm:col-span-1 sm:border-r"
+                className="p-2 border-b bg-inherit col-span-2 sm:col-span-1 sm:border-r text-[15px] "
                 placeholder="DNI"
               />
-              <select className="p-2 border-b col-span-2 sm:col-span-1 bg-inherit">
+              <select className="p-2 border-b col-span-2 sm:col-span-1 bg-inherit text-[15px]">
                 <option>Tipo contacto</option>
               </select>
               <input
-                className="p-2 border-b sm:border-r sm:border-b-0 bg-inherit col-span-2 sm:col-span-1"
-                placeholder="TELEFONO"
+                className="p-2 border-b sm:border-r sm:border-b-0 bg-inherit col-span-2 sm:col-span-1 text-[15px] "
+                placeholder="Telefono"
               />
               <input
-                className="p-2  bg-inherit col-span-2 "
-                placeholder="CORREO"
+                className="p-2  bg-inherit col-span-2 text-[15px] "
+                placeholder="Correo"
               />
             </div>
           </div>
           <div className="flex flex-col sm:flex-row p-1 sm:p-2  mx-[18px]  items-center">
-            <h1 className="w-full ml-1 sm:ml-0 sm:w-[176px] font-[16px]   text-[#222222]">
+            <h1 className="w-full ml-1 sm:ml-0 sm:w-[176px] font-[16px]  text-[15px]  text-[#222222]">
               Estacion*
             </h1>
             <div className="grid grid-cols-2 sm:grid-cols-3  border rounded-md w-full">
-              <select className="p-2 col-span-full sm:col-span-1  border-b sm:border-r sm:border-b-0  bg-inherit">
+              <select className="p-2 col-span-full sm:col-span-1  border-b sm:border-r sm:border-b-0  bg-inherit text-[15px]">
                 <option>tipo</option>
               </select>
-              <select className="p-2 border-b col-span-full sm:col-span-1 sm:border-r sm:border-b-0  bg-inherit">
+              <select className="p-2 border-b col-span-full sm:col-span-1 sm:border-r sm:border-b-0  bg-inherit text-[15px]">
                 <option>prioridad</option>
               </select>
-              <select className="p-2 col-span-full sm:col-span-1   bg-inherit">
+              <select className="p-2 col-span-full sm:col-span-1   bg-inherit text-[15px]">
                 <option>nivel</option>
               </select>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row p-1 sm:p-2  mx-[18px]  items-center">
-            <h1 className="w-full ml-1 sm:ml-0 sm:w-[176px] font-[16px]   text-[#222222]">
+            <h1 className="w-full ml-1 sm:ml-0 sm:w-[176px] font-[16px]  text-[15px] text-[#222222]">
               Problema*
             </h1>
             <div className="grid grid-cols-2 sm:grid-cols-4  border rounded-md w-full">
-              <select className="p-2 col-span-full sm:col-span-2  border-b sm:border-r sm:border-b-0  bg-inherit">
+              <select className="p-2 col-span-full sm:col-span-2  border-b sm:border-r sm:border-b-0  bg-inherit text-[15px]">
                 <option>Categoria</option>
               </select>
-              <select className="p-2 border-b col-span-full sm:col-span-2 sm:border-r sm:border-b-0  bg-inherit">
+              <select className="p-2 border-b col-span-full sm:col-span-2 sm:border-r sm:border-b-0  bg-inherit text-[15px]">
                 <option>SubCategoria</option>
               </select>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row  p-1 sm:p-2  mx-[18px]  items-center">
-            <h1 className="w-full ml-1 sm:ml-0 sm:w-[176px] font-[16px]   text-[#222222]">
+            <h1 className="w-full ml-1 sm:ml-0 sm:w-[176px] font-[16px] text-[15px]  text-[#222222]">
               Extras*
             </h1>
             <div className="grid grid-cols-2 sm:grid-cols-4  border rounded-md w-full">
               <input
-                className="p-2 col-span-full sm:col-span-2  border-b sm:border-r sm:border-b-0  bg-inherit w-full"
+                className="p-2 col-span-full sm:col-span-2  border-b sm:border-r sm:border-b-0  bg-inherit w-full text-[15px]"
                 type="date"
                 defaultValue={new Date().toDateString()}
               />
               <input
-                className="p-2 border-b col-span-full sm:col-span-2 sm:border-r sm:border-b-0  bg-inherit w-full"
+                className="p-2 border-b col-span-full sm:col-span-2 sm:border-r sm:border-b-0  bg-inherit w-full text-[15px]"
                 type="time"
               />
             </div>

@@ -5,15 +5,19 @@ import { SearchTurno } from "@/components/Turno/SearchTurno";
 import { RootState } from "@/libs/redux/store/store";
 import { shallowEqual, useSelector } from "react-redux";
 import { LayoutPrincipal } from "@/components/LayoutPrincipal";
+import { GetServerSideProps } from "next";
+import { VerifyToken } from "@/helpers/auth";
+import { useDispatch } from "react-redux";
+import { SetUser } from "@/libs/redux/feature/UserSlice.feature";
 
-const turno = () => {
+const turno = ({ user }: any) => {
   const { view_actions_shift } = useSelector(
     (state: RootState) => state.shift,
     shallowEqual
   );
 
   return (
-    <LayoutPrincipal>
+    <LayoutPrincipal user={user}>
       <CardTurno>
         {view_actions_shift ? <FormEditShift /> : <SearchTurno />}
         <Calendar />
@@ -25,14 +29,11 @@ const turno = () => {
 
 export default turno;
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-//     const data1 = await prisma.areas.findFirst({
-//         where: {
-//             id_area: 1
-//         }
-//     })
-//     const data =JSON.stringify(data1)
-//     return {
-//         props: { data }
-//     }
-// }
+export const getServerSideProps: GetServerSideProps = async (req) => {
+  const { token } = req.req.cookies;
+  const user_info = await VerifyToken(token);
+  const user = user_info?.payload;
+  return {
+    props: { user },
+  };
+};
