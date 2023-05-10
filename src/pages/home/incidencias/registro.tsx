@@ -36,6 +36,8 @@ const Registro = ({ user }: any) => {
       <br />
       <br />
       <br />
+      <br />
+      <br />
     </LayoutPrincipal>
   );
 };

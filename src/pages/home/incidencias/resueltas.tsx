@@ -1,11 +1,17 @@
 import { LayoutPrincipal } from "@/components/LayoutPrincipal";
+import CardRegistroIncidencias from "@/components/incidencias/registro/CardRegistro";
+import { CardHeader } from "@/components/incidencias/resueltas/CardHeader";
+import { PresentationIncidentsResolve } from "@/components/incidencias/resueltas/PresentationIncidentsResolve";
 import { VerifyToken } from "@/helpers/auth";
 import { GetServerSideProps } from "next";
 
 const Resueltas = ({ user }: any) => {
   return (
     <LayoutPrincipal user={user}>
-      <div>resueltas {JSON.stringify(user)}</div>
+      <CardRegistroIncidencias>
+        <CardHeader />
+        <PresentationIncidentsResolve />
+      </CardRegistroIncidencias>
     </LayoutPrincipal>
   );
 };

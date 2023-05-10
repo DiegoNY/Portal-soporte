@@ -19,7 +19,7 @@ export class UserService {
         const token = await new SignJWT({
           id: usuario.id_usuario,
           type: usuario.tipo_acceso,
-          name: usuario.nombres,
+          name: `${usuario.nombres} ${usuario.apellidos}`,
           dni: usuario.dni_usuario,
         })
           .setProtectedHeader({ alg: "HS256" })

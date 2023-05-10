@@ -1,6 +1,49 @@
+import cn from "@/utils/cn";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState, ChangeEvent, FormEvent } from "react";
+
+const Input = ({ HandleChange, style, name, title, type }: any) => {
+  const [isFocus, setFocus] = useState(false);
+  const [value, setValue] = useState(" ");
+  return (
+    <div
+      className={cn("p-0.5 px-2 w-full relative border-b", style)}
+      onClick={() => {
+        setFocus(true);
+      }}
+    >
+      <p className="p-1"></p>
+      <h1
+        className={cn(
+          isFocus
+            ? "text-[14px] translate-y-[-50%] left-1.5 "
+            : "font-[400] text-[16px] bottom-2 ",
+          "text-[#717171] line-[20px] transition-all absolute p-2"
+        )}
+      >
+        {title}
+      </h1>
+      <input
+        name={name}
+        type={type}
+        className=" w-full outline-none mt-1 p-2 text-[15px]"
+        onChange={(e) => {
+          setValue(e.target.value);
+          HandleChange(e);
+        }}
+        onBlur={() => {
+          if (value.trim().length == 0) {
+            setFocus(false);
+          } else {
+            setFocus(true);
+          }
+        }}
+      />
+    </div>
+  );
+};
+
 export default function Home() {
   const [user, setUser] = useState({});
   const router = useRouter();
@@ -51,18 +94,13 @@ export default function Home() {
                 <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
               </svg>
             </span>
-            <div className="border flex flex-col rounded-lg w-[370px] lg:w-[26vw] border-gray-300">
-              <input
-                name="user"
-                placeholder="Usuario"
-                className=" outline-none border-b p-2 text-[15px]"
-                onChange={HandleChange}
-              />
-              <input
+            <div className="border flex flex-col rounded-lg  w-[330px]  lg:w-[26vw] border-gray-300">
+              <Input name="user" title="Usuario" HandleChange={HandleChange} />
+              <Input
                 name="password"
-                placeholder="Contraseña"
-                className="outline-none p-2 text-[15px]"
-                onChange={HandleChange}
+                type="password"
+                title="Contraseña"
+                HandleChange={HandleChange}
               />
             </div>
             <div className="flex flex-col items-center gap-1">

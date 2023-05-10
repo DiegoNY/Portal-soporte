@@ -6,7 +6,6 @@ export async function middleware(request: NextRequest) {
   const cookie = request.cookies.get("token");
   if (cookie) {
     try {
-      console.log(cookie.value);
       const { payload } = await jwtVerify(
         cookie.value,
         new TextEncoder().encode(SECRET_KEY)

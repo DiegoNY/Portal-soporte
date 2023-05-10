@@ -1,4 +1,9 @@
+import { RootState } from "@/libs/redux/store/store";
+import { shallowEqual, useSelector } from "react-redux";
+
 const UserMain = () => {
+  const user = useSelector((state: RootState) => state.user, shallowEqual);
+
   const items = [
     {
       text: "Mi perfil",
@@ -62,7 +67,7 @@ const UserMain = () => {
           </svg>
         </li>
         <span className="text-[14px] font-[500] tracking-tight">
-          Bryan Polo Gomez
+          {user.name}
         </span>
       </ul>
       <div className="border-t-[1px]"></div>
