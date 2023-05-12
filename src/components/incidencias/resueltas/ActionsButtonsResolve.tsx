@@ -16,7 +16,7 @@ export const ActionsButtonsResolve = () => {
     >
       <ButtonAction
         onClick={() => {
-          route.push("/home/incidencias/asignacion?Incidencia=" + "23-23255");
+          route.push("/home/incidencias/orden_servicio?numero=" + "23-23255");
         }}
         icon={
           <svg

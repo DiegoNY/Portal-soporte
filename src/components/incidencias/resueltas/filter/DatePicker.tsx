@@ -35,6 +35,13 @@ export const DatePicker = ({ title }: { title: string }) => {
               setFocus(true);
             }
           }}
+          onMouseLeave={() => {
+            if (value.trim().length == 0) {
+              setFocus(false);
+            } else {
+              setFocus(true);
+            }
+          }}
         />
       ) : (
         ""
