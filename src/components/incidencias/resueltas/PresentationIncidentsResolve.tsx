@@ -5,31 +5,27 @@ import { CustomToolbar } from "@/components/DataGrid/CustomToolbar";
 import { useSelector } from "react-redux";
 import { RootState } from "@/libs/redux/store/store";
 import { Actions } from "../registro/presentation_incidents/Actions";
+import { ActionsIncidentsResolve } from "./ActionsIncidentsResolve";
 
 export const PresentationIncidentsResolve = () => {
-  const incidents = useSelector((state: RootState) => state.incidents);
+  const incidents = useSelector((state: RootState) => state.incidents_resolve);
   const columns = [
-    { headerName: "ID", field: "id" },
-    { headerName: "#", field: "code", width: 60 },
-    { headerName: "Tipo Orden", field: "company", width: 98 },
-    { headerName: "N° Orden", field: "branch", width: 120 },
-    { headerName: "Tecnico", field: "contact" },
-    { headerName: "Fecha Servicio", field: "registered" },
-    { headerName: "Empresa", field: "technical", width: 160 },
-    { headerName: "Sucursal", field: "season", width: 67 },
-    { headerName: "Informe", field: "attention", width: 120 },
-    { headerName: "Iniciada", field: "report", width: 120 },
-    {
-      headerName: "Terminada",
-      field: "state",
-      width: 120,
-    },
+    { headerName: "#", field: "id", width: 40 },
+    { headerName: "Tipo Orden", field: "order_type" },
+    { headerName: "N° Orden", field: "order_number", width: 120 },
+    { headerName: "Tecnico", field: "technician" },
+    { headerName: "Fecha Servicio", field: "service_date" },
+    { headerName: "Empresa", field: "company" },
+    { headerName: "Sucursal", field: "branch" },
+    { headerName: "Informe", field: "report", width: 110 },
+    { headerName: "Iniciada", field: "started", width: 110 },
+    { headerName: "Terminada", field: "finish", width: 120 },
     {
       headerName: "Acciones",
       field: "actions",
-      width: 110,
+      width: 80,
       renderCell: (params: any) => {
-        return <Actions incidence_id={params.id} />;
+        return <ActionsIncidentsResolve />;
       },
     },
   ];
@@ -47,7 +43,7 @@ export const PresentationIncidentsResolve = () => {
           initialState={{
             columns: {
               columnVisibilityModel: {
-                id: false,
+                id: true,
               },
             },
           }}

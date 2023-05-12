@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const Incidents = createSlice({
-  name: "navigation",
+  name: "incidents",
   initialState: {
     incident_record: false,
     incidents: [
