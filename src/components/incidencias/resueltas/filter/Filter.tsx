@@ -36,13 +36,36 @@ export const Filter = () => {
             <path d="M18 9v11"></path>
           </svg>
         </div>
-        <div className="p-2 flex gap-5 flex-wrap">
+        <div className="p-2 flex gap-6 flex-wrap justify-center ">
           <SelectInfo title="Empresa" options={""} />
           <SelectInfo title="Sucursal" options={""} />
-          <p className="p-2"></p>
-          <div className="flex gap-3 ">
-            <DatePicker title="Fecha de inicio" />
-            <DatePicker title="Fecha de fin" />
+          <div className="flex flex-col gap-1.5">
+            <h1 className="text-[13px]">Filtrar por Fechas</h1>
+            <div className="flex gap-3 ">
+              <DatePicker title="Fecha de inicio" />
+              <DatePicker title="Fecha de fin" />
+            </div>
+          </div>
+          <div>
+            <h1 className="text-[13px] mb-1.5">Buscar</h1>
+            <span className="flex items-center justify-center h-[2.3rem] bg-blue-200 rounded-lg cursor-pointer">
+              <svg
+                className="text-blue-700"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                <path d="M21 21l-6 -6"></path>
+              </svg>
+            </span>
           </div>
         </div>
       </div>
