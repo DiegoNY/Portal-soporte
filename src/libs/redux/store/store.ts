@@ -4,6 +4,7 @@ import turnoReducer from "../feature/TurnoSlice.feature";
 import incidentsReducer from "../feature/Incidents.feature";
 import userReducer from "../feature/UserSlice.feature";
 import incidentsResolveReducer from "../feature/IncidentsResolves.feature";
+import serviceOrderReducer from "../feature/ServiceOrder";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     incidents: incidentsReducer,
     user: userReducer,
     incidents_resolve: incidentsResolveReducer,
+    service_order: serviceOrderReducer,
   },
 });
 
