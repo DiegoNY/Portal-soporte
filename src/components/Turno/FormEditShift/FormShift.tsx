@@ -60,30 +60,25 @@ export const FormShift = () => {
   return (
     <>
       <form className="flex flex-col gap-2 h-full">
-        <SelectForm
-          value={turno.shift_type}
-          name_form="shift_type"
-          name_input={
-            turno.second_view_action ? "Turno Semanal Apoyo" : "Turno Semanal"
-          }
-          onChange={HandleChange}
-        >
-          {turno.second_view_action ? (
-            <option value={2}>Turno semanal apoyo</option>
-          ) : (
-            <option value={1}>Turno semanal</option>
-          )}
-        </SelectForm>
+        <div className="gap-1 flex flex-col w-full border rounded-sm p-1 min-h-[54px] justify-center hover:border-double hover:border-sky-200  cursor-pointer">
+          <label className="px-1 text-[14px] cursor-pointer">
+            <h1 className="px-1  font-[400] transition-all">
+              {turno.second_view_action
+                ? "Turno semanal apoyo"
+                : "Turno semanal"}{" "}
+            </h1>
+          </label>
+        </div>
         <SelectForm
           value={turno.second_view_action ? turno.support_staff : turno.staff}
           name_form={turno.second_view_action ? "support_staff" : "staff"}
           name_input="Personal"
           onChange={HandleChange}
         >
-          <option>Nombre personal</option>
+          <option value={0}>Nombre personal</option>
           <option value={2}>Bryan Polo Gomez</option>
         </SelectForm>
-        <div className="border rounded-lg px-3 py-2">
+        <div className="border rounded-sm px-3 py-2">
           <h1 className="text-[14px] px-1 text-[#7E7E7E] ">Fecha</h1>
           <div className="flex  flex-col px-1 ">
             <div className="font-[14px] text-[15px] flex justify-between">

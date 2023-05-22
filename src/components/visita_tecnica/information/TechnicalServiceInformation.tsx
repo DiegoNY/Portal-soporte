@@ -1,11 +1,10 @@
-import {} from "react";
-import { InfoFormOrder } from "./InfoFormOrder";
-import { ClientDataOrder } from "./ClientDataOrder";
-import { WorkDoneOrder } from "./WorkDoneOrder";
-import { UsedMaterials } from "./UsedMaterial/UsedMaterials";
-import { Signatures } from "./signature/Signatures";
+import { CustomerDataOrder } from "./CustomerDataOrder";
+import { InfoFormOrder } from "@/components/incidencias/ordenServicio/InfoFormOrder";
+import { ServerRevision } from "./ServerRevision";
+import { CabinetReview } from "./CabinetReview";
+import { ComplementaryReviews } from "./complementary_reviews/ComplementaryReviews";
 
-export const InfoOrder = () => {
+export const TechnicalServiceInformation = () => {
   return (
     <section className="flex flex-col p-1 gap-2">
       <div className="flex justify-between w-full">
@@ -22,10 +21,16 @@ export const InfoOrder = () => {
           />
         </div>
       </div>
-      <ClientDataOrder />
-      <WorkDoneOrder />
-      <UsedMaterials />
-      <Signatures />
+      <CustomerDataOrder />
+      <InfoFormOrder
+        title="DESCRIPCION DE EQUIPOS REVISION OBSERVACIONES"
+        classs={"py-2 px-2 bg-teal-100 "}
+        classText="text-teal-700 font-[600] "
+      />
+      <CabinetReview />
+      <ServerRevision />
+      <ComplementaryReviews />
+
       <div className="flex justify-end rounded-lg absolute sm:static mt-2 bottom-2 right-4">
         <button className="bg-sky-300 text-blue-700 gap-2 font-[500] p-2 rounded-sm  flex  ">
           <span>

@@ -1,16 +1,22 @@
 import cn from "@/utils/cn";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 export const DatePicker = ({ title }: { title: string }) => {
   const [isFocus, setFocus] = useState(false);
   const [value, setValue] = useState("");
+  const dateinforef = useRef<HTMLInputElement>(null);
+
+  const HandleClick = () => {
+    setFocus(true);
+  };
+
   return (
     <div
       className={cn(
         "border cursor-pointer w-[11rem] h-[2.5rem] rounded-md  p-2 text-[14px]  outline-none relative",
         isFocus ? "border-sky-200 border-4  border-double " : ""
       )}
-      onClick={() => setFocus(true)}
+      onClick={HandleClick}
     >
       <h1
         className={cn(
@@ -20,32 +26,29 @@ export const DatePicker = ({ title }: { title: string }) => {
       >
         {title}
       </h1>
-      {isFocus ? (
-        <input
-          type="date"
-          className="w-full h-full"
-          onChange={(e) => {
-            setValue(e.target.value);
-          }}
-          onFocus={() => setFocus(true)}
-          onBlur={() => {
-            if (value.trim().length == 0) {
-              setFocus(false);
-            } else {
-              setFocus(true);
-            }
-          }}
-          onMouseLeave={() => {
-            if (value.trim().length == 0) {
-              setFocus(false);
-            } else {
-              setFocus(true);
-            }
-          }}
-        />
-      ) : (
-        ""
-      )}
+      <input
+        type="date"
+        ref={dateinforef}
+        className={cn("w-full", isFocus ? "" : "hidden")}
+        onChange={(e) => {
+          setValue(e.target.value);
+        }}
+        onFocus={() => setFocus(true)}
+        onBlur={() => {
+          if (value.trim().length == 0) {
+            setFocus(false);
+          } else {
+            setFocus(true);
+          }
+        }}
+        onMouseLeave={() => {
+          if (value.trim().length == 0) {
+            setFocus(false);
+          } else {
+            setFocus(true);
+          }
+        }}
+      />
     </div>
   );
 };

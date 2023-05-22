@@ -2,16 +2,20 @@ import cn from "@/utils/cn";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useRef } from "react";
 
 const Input = ({ HandleChange, style, name, title, type }: any) => {
   const [isFocus, setFocus] = useState(false);
   const [value, setValue] = useState(" ");
+  const ref = useRef<HTMLInputElement>(null);
   return (
     <div
       className={cn("p-0.5 px-2 w-full relative border-b", style)}
       onClick={() => {
         setFocus(true);
+        if (ref != null) {
+          ref?.current?.focus();
+        }
       }}
     >
       <p className="p-1"></p>
@@ -26,6 +30,7 @@ const Input = ({ HandleChange, style, name, title, type }: any) => {
         {title}
       </h1>
       <input
+        ref={ref}
         name={name}
         type={type}
         className=" w-full outline-none mt-1 p-2 text-[15px]"

@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 export const ActionsButtons = () => {
   const route = useRouter();
   const dispatch = useDispatch();
+
   return (
     <div
       className="border py-6 px-3 fixed mt-44 font-[14px] bg-white w-[170px] mr-20 z-20 rounded-lg actions-flotant border-[#EEEDED] shadow-xl"
@@ -63,6 +64,9 @@ export const ActionsButtons = () => {
             <path d="M9 13h6"></path>
           </svg>
         }
+        onClick={() => {
+          route.push("/home/incidencias/orden_servicio?numero=" + "23-23252");
+        }}
         title="Llenar Orden"
       />
       <ButtonAction

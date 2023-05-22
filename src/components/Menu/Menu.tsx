@@ -44,7 +44,7 @@ const Menu = () => {
         },
         {
           text: "Visitas Tecnicas Terminadas",
-          route: "/reports/box",
+          route: "/home/incidencias/visita_tecnica",
         },
       ],
     },

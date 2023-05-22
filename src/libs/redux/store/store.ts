@@ -5,7 +5,7 @@ import incidentsReducer from "../feature/Incidents.feature";
 import userReducer from "../feature/UserSlice.feature";
 import incidentsResolveReducer from "../feature/IncidentsResolves.feature";
 import serviceOrderReducer from "../feature/ServiceOrder";
-
+import technicalVisitsReducer from "../feature/TechnicalVisits.feature";
 const store = configureStore({
   reducer: {
     navigation: NavigationReducer,
@@ -14,6 +14,7 @@ const store = configureStore({
     user: userReducer,
     incidents_resolve: incidentsResolveReducer,
     service_order: serviceOrderReducer,
+    technical_visits_reducer: technicalVisitsReducer,
   },
 });
 

@@ -1,11 +1,17 @@
 import {} from "react";
 import { InfoFormOrder } from "../InfoFormOrder";
 import { UsedMaterialTable } from "./UsedMaterialTable";
+import { useDispatch } from "react-redux";
+import { ChangeViewAddUsedMaterials } from "@/libs/redux/feature/ServiceOrder";
 
 const AddButton = () => {
+  const dispatch = useDispatch();
   return (
     <div>
-      <button className="flex gap-2 text-[14px] bg-blue-700 text-white px-4 py-0.5 rounded-sm">
+      <button
+        className="flex gap-2 text-[14px] bg-blue-700 text-white px-4 py-0.5 rounded-sm"
+        onClick={() => dispatch(ChangeViewAddUsedMaterials())}
+      >
         <span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
