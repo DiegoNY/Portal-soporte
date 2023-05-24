@@ -75,7 +75,6 @@ export const FormShift = () => {
           name_input="Personal"
           onChange={HandleChange}
         >
-          <option value={0}>Nombre personal</option>
           <option value={2}>Bryan Polo Gomez</option>
         </SelectForm>
         <div className="border rounded-sm px-3 py-2">

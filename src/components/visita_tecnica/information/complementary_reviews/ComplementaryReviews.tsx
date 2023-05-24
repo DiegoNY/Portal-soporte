@@ -35,7 +35,7 @@ export const ComplementaryReviews = () => {
         classs={"py-2 px-2 flex justify-between"}
         classText="text-teal-700 font-[600] "
         button={
-          <div className="w-[12vw] p-0.5 flex gap-2">
+          <div className="sm:w-[12vw] p-0.5 flex flex-col sm:flex-row gap-2">
             <button
               onClick={AddComplementary}
               className="text-teal-700 bg-emerald-100 px-2 py-1 font-[600] rounded-sm text-[14px] "

@@ -30,7 +30,7 @@ export const TechnicalVisitPresentation = () => {
   const rows = incidents.incidents;
   return (
     <CardPresentationIncidents title="Visitas Tecnicas Registradas">
-      <div className="col-span-full h-full bg-white" style={{ height: "70vh" }}>
+      <div className="col-span-full h-full bg-white ">
         <DataGrid
           rows={rows}
           columns={columns}

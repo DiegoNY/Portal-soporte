@@ -1,8 +1,10 @@
+import { Load } from "@/components/Load";
 import cn from "@/utils/cn";
 import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState, ChangeEvent, FormEvent, useRef } from "react";
+import { createPortal } from "react-dom";
 
 const Input = ({ HandleChange, style, name, title, type }: any) => {
   const [isFocus, setFocus] = useState(false);
@@ -53,6 +55,7 @@ const Input = ({ HandleChange, style, name, title, type }: any) => {
 export default function Home() {
   const [user, setUser] = useState({});
   const router = useRouter();
+  const [load, setLoad] = useState(false);
 
   const HandleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -62,12 +65,13 @@ export default function Home() {
 
   const HandleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    setLoad(true);
     axios
       .post("/api/user/login", user)
       .then((rta) => {
         const { data } = rta;
-        console.log(router);
         router.push("/home/incidencias/registro");
+        // setLoad(false);
       })
       .catch((error) => console.log(error));
   };
@@ -130,6 +134,7 @@ export default function Home() {
           </form>
         </div>
       </div>
+      {load && createPortal(<Load />, document.body)}
     </main>
   );
 }

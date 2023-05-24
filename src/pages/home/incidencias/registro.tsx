@@ -1,4 +1,5 @@
 import { LayoutPrincipal } from "@/components/LayoutPrincipal";
+import { Load } from "@/components/Load";
 import { AddIncidents } from "@/components/incidencias/registro/AddIncidents";
 import { Button } from "@/components/incidencias/registro/Button";
 import CardRegistroIncidencias from "@/components/incidencias/registro/CardRegistro";
@@ -24,6 +25,8 @@ const Registro = ({ user }: any) => {
         createPortal(<AddIncidents />, document.body)}
       {incidents.view_detail &&
         createPortal(<ViewDetailIncident />, document.body)}
+      {false && createPortal(<Load />, document.body)}
+
       <CardRegistroIncidencias>
         <InformationRegister />
         <PresentationIncidents />

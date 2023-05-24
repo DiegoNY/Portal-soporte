@@ -21,8 +21,11 @@ const turno = ({ user }: any) => {
       <CardTurno>
         {view_actions_shift ? <FormEditShift /> : <SearchTurno />}
         <Calendar />
-        <br />
       </CardTurno>
+      <br />
+      <br />
+      <br />
+      <br />
     </LayoutPrincipal>
   );
 };

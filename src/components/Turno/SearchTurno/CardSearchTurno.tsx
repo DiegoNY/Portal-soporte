@@ -9,7 +9,7 @@ export const CardSearchTurno = ({
   const dispatch = useDispatch();
 
   return (
-    <section className=" w-[340px] sm:w-[400px] lg:w-[23rem] mx-2 col-span-2 p-2 ">
+    <section className=" w-[340px] sm:w-[400px] lg:w-[30vw] mx-2 col-span-2 p-2 ">
       <div className="w-full flex gap-2">
         <div className="w-full bg-slate-200 shadow-sm p-2 rounded-md flex gap-2 items-center ">
           <span>

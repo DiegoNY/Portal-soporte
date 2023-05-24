@@ -8,7 +8,7 @@ export const CardFormShift = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch();
 
   return (
-    <section className="w-[340px] sm:w-[400px] lg:w-[23rem] bg-white col-span-2 p-2 mx-2">
+    <section className="w-[90vw] sm:w-[30vw]  bg-white col-span-2 px-2">
       <div className=" grid grid-cols-2 w-full mb-1">
         <div
           className={cn(

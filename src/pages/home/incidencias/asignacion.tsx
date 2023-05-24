@@ -47,7 +47,7 @@ const Registro = ({ user }: any) => {
               </button>
             </div>
           </div>
-          <div className="flex flex-col w-[94vw] sm:w-[80vw] justify-start gap-2 bg-[#ffffff] border px-3 mt-0.5">
+          <div className="flex flex-col justify-start gap-2 bg-[#ffffff] border px-3 mt-0.5">
             <div className="py-2 flex gap-1 text-[15px]">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

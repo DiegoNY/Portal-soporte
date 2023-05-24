@@ -4,9 +4,9 @@ import { AssignmentInformation } from "./AssignmentInformation";
 export const HeaderInformationAssignment = () => {
   return (
     <>
-      <article className="flex flex-col sm:flex-row">
+      <article className="flex flex-col sm:flex-row px-2.5 gap-2">
         <div>
-          <div className="text-[14px] w-[80px] flex justify-between">
+          <div className="text-[14px] w-[80px] flex justify-center bg-emerald-100 rounded-lg  text-green-700 font-semibold">
             <p className=" py-0.5 rounded-lg">Informado</p>
           </div>{" "}
           <AssignmentInformation

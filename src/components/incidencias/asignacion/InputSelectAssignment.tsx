@@ -20,7 +20,7 @@ export const InputSelectAssignment = ({
       <div
         className={cn(
           "border  w-full px-2 relative  p-1 rounded-md",
-          isFocus ? "border-sky-200" : "border-[#71717171]"
+          isFocus ? "border-sky-200" : ""
         )}
       >
         <h1

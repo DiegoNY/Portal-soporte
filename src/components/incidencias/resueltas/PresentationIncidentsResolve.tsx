@@ -13,11 +13,11 @@ export const PresentationIncidentsResolve = () => {
     { headerName: "#", field: "id", width: 40 },
     { headerName: "Tipo Orden", field: "order_type" },
     { headerName: "N° Orden", field: "order_number", width: 120 },
-    { headerName: "Tecnico", field: "technician" },
+    { headerName: "Tecnico", field: "technician", flex: 1 },
     { headerName: "Fecha Servicio", field: "service_date" },
     { headerName: "Empresa", field: "company" },
     { headerName: "Sucursal", field: "branch" },
-    { headerName: "Informe", field: "report", width: 110 },
+    { headerName: "Informe", field: "report", width: 110, flex: 1 },
     { headerName: "Iniciada", field: "started", width: 110 },
     { headerName: "Terminada", field: "finish", width: 120 },
     {

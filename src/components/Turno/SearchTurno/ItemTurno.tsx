@@ -66,11 +66,13 @@ export const ItemTurno = () => {
       </h1>
       <div
         className={
-          viewEdit ? " flex items-center justify-between  w-full" : "hidden"
+          viewEdit
+            ? " flex items-center justify-between  w-full transition-all"
+            : "hidden"
         }
       >
         <div
-          className="text-slate-400 rounded-lg hover:text-green-600 hover:bg-green-100 gap-1 bg-green-50 w-full flex items-center justify-center h-[46px]"
+          className="text-slate-400 rounded-lg transition-all hover:text-green-600 hover:bg-green-100 gap-1 bg-green-50 w-full flex items-center justify-center h-[46px]"
           onClick={editShift}
         >
           <h1 className="font-[500] ">Editar</h1>
@@ -92,7 +94,7 @@ export const ItemTurno = () => {
           </span>
         </div>
         <div
-          className="text-slate-400 hover:text-blue-500 gap-1 bg-sky-50 rounded-lg hover:bg-sky-100 w-full items-center flex justify-center h-[46px]"
+          className="text-slate-400 transition-all hover:text-blue-500 gap-1 bg-sky-50 rounded-lg hover:bg-sky-100 w-full items-center flex justify-center h-[46px]"
           onClick={SeeTurnUI}
         >
           <h1 className="font-[500] ">Ver</h1>

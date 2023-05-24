@@ -2,7 +2,7 @@ import React from "react";
 
 export const TechnicalTable = () => {
   return (
-    <div className="relative rounded-xl overflow-auto">
+    <div className="relative rounded-xl overflow-auto border-[1px] mt-2">
       <div className="shadow-sm overflow-hidden my-8">
         <table className="border-collapse table-fixed w-full text-sm">
           <thead>
@@ -13,7 +13,7 @@ export const TechnicalTable = () => {
               <th className="border-b dark:border-slate-600 font-medium p-4 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
                 Nombres y apellidos
               </th>
-              <th className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
+              <th className="border-b dark:border-slate-600 font-medium p-4 pr-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 ">
                 Eliminar
               </th>
             </tr>

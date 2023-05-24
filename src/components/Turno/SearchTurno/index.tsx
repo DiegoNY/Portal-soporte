@@ -1,17 +1,29 @@
-import { CardSearchTurno } from "./CardSearchTurno"
-import { ItemTurno } from "./ItemTurno"
+import { CardSearchTurno } from "./CardSearchTurno";
+import { ItemTurno } from "./ItemTurno";
 
 export const SearchTurno = () => {
-    return (
-        <CardSearchTurno>
-            <ItemTurno />
-            <ItemTurno />
-            <ItemTurno />
-            <ItemTurno />
-            <ItemTurno />
-            <ItemTurno />
-            <ItemTurno />
-
-        </CardSearchTurno>
-    )
-}
+  return (
+    <CardSearchTurno>
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+      <ItemTurno />
+    </CardSearchTurno>
+  );
+};
