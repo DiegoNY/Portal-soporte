@@ -25,8 +25,10 @@ export const InputSelectAssignment = ({
       >
         <h1
           className={cn(
-            "font-[400] leading-[20px] absolute   w-[20rem]  pointer-events-none transition-all",
-            isFocus ? "text-[13px] text-sky-400 " : "text-[15px] translate-y-5"
+            "font-medium leading-[20px] absolute   w-[20rem]  pointer-events-none transition-all",
+            isFocus
+              ? "text-[13px] text-sky-400 "
+              : "text-[15px] translate-y-5 text-slate-400"
           )}
         >
           {" "}

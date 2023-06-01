@@ -20,7 +20,7 @@ export const DatePicker = ({ title }: { title: string }) => {
     >
       <h1
         className={cn(
-          "absolute z-10 translate-y-[-93%] bg-white px-0.5 transition-all text-[14px] font-[400]",
+          "absolute z-10 translate-y-[-93%] bg-white px-0.5 transition-all text-[14px] font-[400] pointer-events-none",
           isFocus ? "text-[12px] text-sky-300" : "translate-y-[0%]"
         )}
       >
@@ -29,7 +29,7 @@ export const DatePicker = ({ title }: { title: string }) => {
       <input
         type="date"
         ref={dateinforef}
-        className={cn("w-full", isFocus ? "" : "hidden")}
+        className={cn("w-full", isFocus ? "" : "")}
         onChange={(e) => {
           setValue(e.target.value);
         }}

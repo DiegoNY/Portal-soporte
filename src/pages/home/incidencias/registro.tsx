@@ -21,9 +21,9 @@ const Registro = ({ user }: any) => {
         <AddIncidents />
       ) : null} */}
 
-      {incidents.incident_record &&
+      {incidents?.incident_record &&
         createPortal(<AddIncidents />, document.body)}
-      {incidents.view_detail &&
+      {incidents?.view_detail &&
         createPortal(<ViewDetailIncident />, document.body)}
       {false && createPortal(<Load />, document.body)}
 

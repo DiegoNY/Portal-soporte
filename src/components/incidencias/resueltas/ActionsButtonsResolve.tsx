@@ -3,6 +3,7 @@ import { ButtonAction } from "../registro/presentation_incidents/ButtonAction";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { ChangeViewDetail } from "@/libs/redux/feature/Incidents.feature";
+import { ChangeViewDetailIncidents } from "@/libs/redux/feature/IncidentsResolves.feature";
 
 export const ActionsButtonsResolve = () => {
   const route = useRouter();
@@ -74,6 +75,7 @@ export const ActionsButtonsResolve = () => {
           </svg>
         }
         title="Detalle de incidencia"
+        onClick={() => dispatch(ChangeViewDetailIncidents())}
       />
       <ButtonAction
         onClick={() => {

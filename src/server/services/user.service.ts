@@ -32,4 +32,23 @@ export class UserService {
       throw Error("Contraseña o usuario incorrecto : 401");
     }
   }
+
+  async GetAllUsers() {
+    const users = await prisma.usuarios.findMany({
+      where: {
+        estatus: 1,
+      },
+    });
+
+    let user_info: any;
+    for (user_info of users) {
+      user_info.cronogroma = await prisma.cronograma.findMany({
+        where: {
+          personal: Number(user_info.dni_usuario),
+        },
+      });
+    }
+
+    return users;
+  }
 }

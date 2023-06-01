@@ -39,14 +39,15 @@ model callcenter {
 }
 
 model cambios_incidencias {
-  id_cambio          Int       @id @default(autoincrement())
+  id_cambio          Int          @id @default(autoincrement())
   id_usuario         Int?
   id_incidencia      Int?
-  fecha              DateTime? @db.Date
-  descripcion_cambio String?   @db.Text
+  fecha              DateTime?    @db.Date
+  descripcion_cambio String?      @db.Text
   estado             Int?
-  hora               DateTime? @db.Time(0)
-  cod_incidencia     String?   @db.VarChar(15)
+  hora               DateTime?    @db.Time(0)
+  cod_incidencia     String?      @db.VarChar(15)
+  incidencia         incidencias? @relation(fields: [id_incidencia], references: [id_incidencia])
 
   @@index([id_incidencia], map: "fk_incidencia")
   @@index([id_usuario], map: "fk_usuario")
@@ -69,24 +70,26 @@ model cargo_contacto {
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model categorias {
-  id                    Int       @id @default(autoincrement())
-  codigo                String?   @db.VarChar(255)
-  categoria             String?   @db.VarChar(255)
-  descripcion_categoria String?   @db.Text
-  fecha_registro        DateTime? @db.Date
+  id                    Int              @id @default(autoincrement())
+  codigo                String?          @db.VarChar(255)
+  categoria             String?          @db.VarChar(255)
+  descripcion_categoria String?          @db.Text
+  fecha_registro        DateTime?        @db.Date
   tipo                  Int?
   estado                Int?
+  sub_categorias        sub_categorias[]
 }
 
 model contactos_empresa {
-  id       Int     @id @default(autoincrement())
-  dni_inf  String? @db.VarChar(11)
-  nombres  String? @db.VarChar(250)
-  telefono String? @db.VarChar(11)
-  correo   String? @db.VarChar(70)
-  cargo    String? @db.VarChar(50)
+  id       Int       @id @default(autoincrement())
+  dni_inf  String?   @db.VarChar(11)
+  nombres  String?   @db.VarChar(250)
+  telefono String?   @db.VarChar(11)
+  correo   String?   @db.VarChar(70)
+  cargo    String?   @db.VarChar(50)
   empresa  Int?
   sucursal Int?
+  empresas empresas? @relation(fields: [empresa], references: [id_empresa])
 }
 
 model cronograma {
@@ -110,25 +113,27 @@ model cronograma {
 }
 
 model empresas {
-  id_empresa     Int     @id @default(autoincrement())
-  ruc_empresa    String? @db.VarChar(11)
-  razon_social   String? @db.VarChar(500)
+  id_empresa     Int                 @id @default(autoincrement())
+  ruc_empresa    String?             @db.VarChar(11)
+  razon_social   String?             @db.VarChar(500)
   contrato       Int?
   id_nube        Int?
   id_grupo       Int?
-  direccion      String? @db.VarChar(500)
-  distrito       String? @db.VarChar(500)
+  direccion      String?             @db.VarChar(500)
+  distrito       String?             @db.VarChar(500)
   facturacion    Int?
   prico          Int?
-  encargado      String? @db.VarChar(250)
-  cargo          String? @db.VarChar(250)
-  telefono       String? @db.VarChar(250)
-  correo         String? @db.VarChar(250)
+  encargado      String?             @db.VarChar(250)
+  cargo          String?             @db.VarChar(250)
+  telefono       String?             @db.VarChar(250)
+  correo         String?             @db.VarChar(250)
   estado         Int?
   eds            Int?
   visitas        Int?
   mantenimientos Int?
   dias_visita    Int?
+  incidencias    incidencias[]
+  contactos      contactos_empresa[]
 }
 
 model filas_orden_visita {
@@ -161,31 +166,36 @@ model imagenes {
 }
 
 model incidencias {
-  id_incidencia        Int       @id @default(autoincrement())
-  codigo_incidencia    String?   @db.VarChar(10)
+  id_incidencia        Int                   @id @default(autoincrement())
+  codigo_incidencia    String?               @db.VarChar(10)
   id_empresa           Int?
-  sucursal             String?   @db.VarChar(250)
-  direccion            String?   @db.Text
+  sucursal             String?               @db.VarChar(250)
+  direccion            String?               @db.Text
   id_usuario           Int?
-  dni_inf              String?   @db.VarChar(8)
-  fecha_informe        DateTime? @db.Date
-  hora_informe         DateTime? @db.Time(0)
-  categoria            String?   @db.VarChar(250)
-  descripcion          String?   @db.Text
-  tipo_soporte         String?   @db.VarChar(50)
+  dni_inf              String?               @db.VarChar(8)
+  fecha_informe        DateTime?             @db.Date
+  hora_informe         DateTime?             @db.Time(0)
+  categoria            String?               @db.VarChar(250)
+  descripcion          String?               @db.Text
+  tipo_soporte         String?               @db.VarChar(50)
   estado_informe       Int?
-  ultima_actualizacion String?   @db.VarChar(50)
-  imagen               String?   @db.VarChar(250)
+  ultima_actualizacion String?               @db.VarChar(50)
+  imagen               String?               @db.VarChar(250)
   creador              Int?
-  tipo_estacion        String?   @db.VarChar(250)
-  comentario           String?   @db.Text
+  tipo_estacion        String?               @db.VarChar(250)
+  comentario           String?               @db.Text
   prioridad            Int?
-  tipo_incidencia      String?   @db.VarChar(50)
+  tipo_incidencia      String?               @db.VarChar(50)
   delete               Int?
-  nro_ticket           String?   @db.VarChar(11)
+  nro_ticket           String?               @db.VarChar(11)
   id_subcategoria      Int?
-  subcategoria         String?   @db.Text
-  codigo_subcategoria  String?   @db.VarChar(255)
+  subcategoria         String?               @db.Text
+  codigo_subcategoria  String?               @db.VarChar(255)
+  cambios              cambios_incidencias[]
+  orden_servicio       orden_servicio[]
+  empresa              empresas?             @relation(fields: [id_empresa], references: [id_empresa])
+  sub_categorias       sub_categorias?       @relation(fields: [id_subcategoria], references: [id])
+  usuarios             usuarios?             @relation(fields: [id_usuario], references: [id_usuario])
 }
 
 model incidencias_ {
@@ -268,24 +278,25 @@ model noticias {
 }
 
 model orden_servicio {
-  id                    Int       @id @default(autoincrement())
+  id                    Int          @id @default(autoincrement())
   ano_orden             Int?
-  tipo_orden            String?   @db.VarChar(50)
-  n_orden               String?   @db.VarChar(15)
+  tipo_orden            String?      @unique @db.VarChar(50)
+  n_orden               String?      @db.VarChar(15)
   id_incidencia         Int?
-  fecha_servicio        DateTime? @db.Date
-  direccion             String?   @db.VarChar(250)
-  observaciones         String?   @db.Text
-  recomendaciones       String?   @db.Text
-  hora_i                DateTime? @db.Time(0)
-  hora_f                DateTime? @db.Time(0)
-  firma_cliente         String?   @db.VarChar(250)
-  fecha_registro        DateTime? @db.DateTime(0)
-  dni_contacto_atencion String?   @db.VarChar(25)
-  contacto_atencion     String?   @db.VarChar(255)
-  dispositivo           String?   @db.VarChar(255)
+  fecha_servicio        DateTime?    @db.Date
+  direccion             String?      @db.VarChar(250)
+  observaciones         String?      @db.Text
+  recomendaciones       String?      @db.Text
+  hora_i                DateTime?    @db.Time(0)
+  hora_f                DateTime?    @db.Time(0)
+  firma_cliente         String?      @db.VarChar(250)
+  fecha_registro        DateTime?    @db.DateTime(0)
+  dni_contacto_atencion String?      @db.VarChar(25)
+  contacto_atencion     String?      @db.VarChar(255)
+  dispositivo           String?      @db.VarChar(255)
   CodCoesti             Int?
-  n_orden_a             String?   @db.VarChar(15)
+  n_orden_a             String?      @db.VarChar(15)
+  incidencias           incidencias? @relation(fields: [id_incidencia], references: [id_incidencia])
 
   @@unique([n_orden, id_incidencia], map: "UNICOS")
 }
@@ -325,13 +336,15 @@ model registro_visita {
 }
 
 model sub_categorias {
-  id              Int       @id @default(autoincrement())
-  id_categoria    String?   @db.VarChar(255)
-  codigo_sub      String?   @db.VarChar(255)
-  sub_categoria   String?   @db.VarChar(250)
-  descripcion_sub String?   @db.Text
-  fecha_registro  DateTime? @db.Date
+  id              Int           @id @default(autoincrement())
+  id_categoria    Int?
+  codigo_sub      String?       @db.VarChar(255)
+  sub_categoria   String?       @db.VarChar(250)
+  descripcion_sub String?       @db.Text
+  fecha_registro  DateTime?     @db.Date
   estatus         Int?
+  categorias      categorias?   @relation(fields: [id_categoria], references: [id])
+  incidencias     incidencias[]
 }
 
 model sucursales {
@@ -386,6 +399,7 @@ model usuarios {
   estatus            Int?
   firma_digital      String?       @db.Text
   tipo_usuario       tipo_usuario? @relation(fields: [tipo_acceso], references: [id_tipo_acceso], onDelete: Cascade, map: "Fk_Tipo_Usuario")
+  incidencias        incidencias[]
 
   @@index([tipo_acceso], map: "Fk_Tipo_Usuario")
 }

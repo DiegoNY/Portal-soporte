@@ -11,7 +11,7 @@ export const CardSearchTurno = ({
   return (
     <section className=" w-[340px] sm:w-[400px] lg:w-[30vw] mx-2 col-span-2 p-2 ">
       <div className="w-full flex gap-2">
-        <div className="w-full bg-slate-200 shadow-sm p-2 rounded-md flex gap-2 items-center ">
+        <div className="w-full bg-slate-100 shadow-sm p-2 rounded-md flex gap-2 items-center ">
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -31,11 +31,11 @@ export const CardSearchTurno = ({
           </span>
           <input
             className="outline-none bg-inherit w-full"
-            placeholder="Fecha - Descripcion - Nombre"
+            placeholder="Buscar"
           />
         </div>
         <button
-          className="text-[14px] px-2 text-center  shadow-sm bg-white hover:bg-sky-100 hover:text-blue-700 hover:font-[500] rounded-lg p-1 items-center flex  "
+          className="text-[13px] px-2 text-center  shadow-sm bg-white hover:bg-sky-100 hover:text-blue-700 hover:font-[500] rounded-sm p-1 items-center flex  "
           onClick={() => dispatch(ChangeViewActionsShift({}))}
         >
           Nuevo

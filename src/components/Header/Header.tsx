@@ -6,8 +6,14 @@ import {
   ChangeUserMain,
   changeMain,
 } from "@/libs/redux/feature/NavigationSlice.feature";
+import { MenuToggle } from "./MenuToggle";
+import { motion, useCycle } from "framer-motion";
+import { useRef } from "react";
 
 const Header = () => {
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef<any>(null);
+
   /**Reducers */
   const navigation = useSelector((state: RootState) => state.navigation);
   const dispatch = useDispatch();
@@ -18,23 +24,22 @@ const Header = () => {
 
   return (
     <header className=" fixed z-40 h-14 bg-gradient-to-b from-white to-transparent w-full px-2 flex border-b">
-      <div
-        className="swap-rotate btn swap btn-circle border-none bg-transparent hover:bg-transparent lg:hidden items-center flex cursor-pointer"
-        onClick={(e) => {
-          e.stopPropagation();
-          dispatch(changeMain());
-        }}
-      >
-        <svg
-          className="swap-off fill-current"
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          viewBox="0 0 512 512"
+      <div className="swap-rotate btn swap btn-circle border-none bg-transparent hover:bg-transparent lg:hidden items-center flex cursor-pointer">
+        <motion.nav
+          initial={false}
+          animate={isOpen ? "open" : "closed"}
+          ref={containerRef}
         >
-          <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"></path>
-        </svg>
+          <MenuToggle
+            toggle={(e: any) => {
+              toggleOpen();
+              e.stopPropagation();
+              dispatch(changeMain());
+            }}
+          />
+        </motion.nav>
       </div>
+
       <a className="inline-flex items-center  h-full w-32 px-2 font-[600]  hover:opacity-80 sm:px-6 cursor-pointer ">
         {/**Nombre de empresa */}
       </a>
@@ -58,7 +63,9 @@ const Header = () => {
         </div>
       </div>
       <div className="flex h-full items-center justify-center ">
-        <div
+        <motion.div
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.8 }}
           className="p-2 hover:bg-[#81858133] rounded-lg cursor-pointer "
           onClick={(e) => ChangeMenuUser(e)}
         >
@@ -77,7 +84,7 @@ const Header = () => {
               ></path>
             </g>
           </svg>
-        </div>
+        </motion.div>
       </div>
       {navigation.user == true && <UserMain />}
     </header>

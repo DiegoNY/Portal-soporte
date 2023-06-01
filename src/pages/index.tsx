@@ -71,9 +71,12 @@ export default function Home() {
       .then((rta) => {
         const { data } = rta;
         router.push("/home/incidencias/registro");
-        // setLoad(false);
+        setLoad(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setLoad(false);
+      });
   };
 
   return (

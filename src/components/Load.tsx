@@ -37,7 +37,7 @@ export const Load = () => {
           }}
         />
         <motion.div
-          className="w-[30px] h-[30px] bg-blue-500"
+          className="w-[30px] h-[30px] bg-orange-500"
           animate={{
             scale: [1, 2, 2, 1, 1],
             rotate: [0, 0, 180, 180, 0],

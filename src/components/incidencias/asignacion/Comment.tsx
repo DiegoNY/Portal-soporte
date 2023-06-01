@@ -21,10 +21,10 @@ export const Comment = ({ title = "Comentario" }: { title?: string }) => {
       >
         <h1
           className={cn(
-            " font-[400]  absolute bottom-7 transition-all ",
+            " font-medium   absolute bottom-7 transition-all ",
             isFocus
               ? "translate-y-[-120%] text-[13px] text-sky-500 "
-              : "text-[15px] "
+              : "text-[15px]  text-slate-400"
           )}
         >
           {title}

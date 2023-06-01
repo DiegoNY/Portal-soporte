@@ -9,10 +9,8 @@ export const Filter = () => {
   return (
     <div className="col-span-full p-3">
       <div className="bg-white p-3 border-[1px] flex flex-col">
-        <div className="flex gap-1 items-center">
-          <h1 className="text-[14px] font-[400] text-[#313131]">
-            Filtros de busqueda{" "}
-          </h1>
+        <div className="flex gap-1 items-center text-slate-600">
+          <h1 className="text-[14px] font-medium ">Filtros de busqueda </h1>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -40,14 +38,18 @@ export const Filter = () => {
           <SelectInfo title="Empresa" options={""} />
           <SelectInfo title="Sucursal" options={""} />
           <div className="flex flex-col gap-1.5">
-            <h1 className="text-[13px]">Filtrar por Fechas</h1>
+            <h1 className="text-[13px] font-[400] text-slate-400">
+              Filtrar por Fechas
+            </h1>
             <div className="flex gap-3 ">
               <DatePicker title="Fecha de inicio" />
               <DatePicker title="Fecha de fin" />
             </div>
           </div>
           <div>
-            <h1 className="text-[13px] mb-1.5">Buscar</h1>
+            <h1 className="text-[13px] mb-1.5 font-[300] text-slate-400">
+              Buscar
+            </h1>
             <span className="flex items-center justify-center h-[2.3rem] bg-blue-200 rounded-lg cursor-pointer">
               <svg
                 className="text-blue-700"

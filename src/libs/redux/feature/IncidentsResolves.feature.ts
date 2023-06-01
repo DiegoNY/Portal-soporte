@@ -8,12 +8,17 @@ export const IncidentsResolves = createSlice({
     branch: 0,
     started: "",
     finished: "",
+    view_detail_incidents: false,
     load: false,
     error: false,
   },
-  reducers: {},
+  reducers: {
+    ChangeViewDetailIncidents: (state) => {
+      state.view_detail_incidents = !state.view_detail_incidents;
+    },
+  },
 });
 
-export const {} = IncidentsResolves.actions;
+export const { ChangeViewDetailIncidents } = IncidentsResolves.actions;
 
 export default IncidentsResolves.reducer;
